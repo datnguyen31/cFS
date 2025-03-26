@@ -96,21 +96,7 @@ void SAMPLE_APP_ProcessGroundCommand(const CFE_SB_Buffer_t *SBBufPtr)
             }
             break;
 
-        case SAMPLE_APP_PROCESS_CC:
-            if (SAMPLE_APP_VerifyCmdLength(&SBBufPtr->Msg, sizeof(SAMPLE_APP_ProcessCmd_t)))
-            {
-                SAMPLE_APP_ProcessCmd((const SAMPLE_APP_ProcessCmd_t *)SBBufPtr);
-            }
-            break;
-
-        case SAMPLE_APP_DISPLAY_PARAM_CC:
-            if (SAMPLE_APP_VerifyCmdLength(&SBBufPtr->Msg, sizeof(SAMPLE_APP_DisplayParamCmd_t)))
-            {
-                SAMPLE_APP_DisplayParamCmd((const SAMPLE_APP_DisplayParamCmd_t *)SBBufPtr);
-            }
-            break;
-
-        /* default case already found during FC vs length test */
+            /* default case already found during FC vs length test */
         default:
             CFE_EVS_SendEvent(SAMPLE_APP_CC_ERR_EID, CFE_EVS_EventType_ERROR, "Invalid ground command code: CC = %d",
                               CommandCode);

@@ -16,40 +16,34 @@
  * limitations under the License.
  ************************************************************************/
 
-/*
-** Purpose:
-** Coverage Unit Test cases for the SAMPLE Application
-**
-** Notes:
-** This implements various test cases to exercise all code
-** paths through all functions defined in the SAMPLE application.
-**
-** It is primarily focused at providing examples of the various
-** stub configurations, hook functions, and wrapper calls that
-** are often needed when coercing certain code paths through
-** complex functions.
-*/
-
-/*
- * Includes
+/**
+ * @file
+ *  An example of an internal (private) header file for SAMPLE Lib
  */
-#include "common_types.h"
+#ifndef SAMPLE_LIB_INTERNAL_H
+#define SAMPLE_LIB_INTERNAL_H
 
-#include "setup.h"
+/* Include all external/public definitions */
+#include "sample_lib.h"
 
-#include "utassert.h"
-#include "uttest.h"
-#include "utstubs.h"
+/*************************************************************************
+** Macro Definitions
+*************************************************************************/
 
-/*
- * Setup function prior to every test
+#define SAMPLE_LIB_BUFFER_SIZE 16
+
+/*************************************************************************
+** Internal Data Structures
+*************************************************************************/
+extern char SAMPLE_LIB_Buffer[SAMPLE_LIB_BUFFER_SIZE];
+
+/*************************************************************************
+** Function Declarations
+*************************************************************************/
+
+/**
+ * Library initialization routine/entry point
  */
-void Sample_UT_Setup(void)
-{
-    UT_ResetState(0);
-}
+int32 SAMPLE_LIB_Init(void);
 
-/*
- * Teardown function after every test
- */
-void Sample_UT_TearDown(void) {}
+#endif

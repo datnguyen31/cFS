@@ -180,21 +180,6 @@ CFE_Status_t SAMPLE_APP_Init(void)
 
     if (status == CFE_SUCCESS)
     {
-        /*
-        ** Register Example Table(s)
-        */
-        status = CFE_TBL_Register(&SAMPLE_APP_Data.TblHandles[0], "ExampleTable", sizeof(SAMPLE_APP_ExampleTable_t),
-                                  CFE_TBL_OPT_DEFAULT, SAMPLE_APP_TblValidationFunc);
-        if (status != CFE_SUCCESS)
-        {
-            CFE_EVS_SendEvent(SAMPLE_APP_TABLE_REG_ERR_EID, CFE_EVS_EventType_ERROR,
-                              "Sample App: Error Registering Example Table, RC = 0x%08lX", (unsigned long)status);
-        }
-        else
-        {
-            status = CFE_TBL_Load(SAMPLE_APP_Data.TblHandles[0], CFE_TBL_SRC_FILE, SAMPLE_APP_TABLE_FILE);
-        }
-
         CFE_Config_GetVersionString(VersionString, SAMPLE_APP_CFG_MAX_VERSION_STR_LEN, "Sample App", SAMPLE_APP_VERSION,
                                     SAMPLE_APP_BUILD_CODENAME, SAMPLE_APP_LAST_OFFICIAL);
 

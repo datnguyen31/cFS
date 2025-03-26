@@ -16,39 +16,27 @@
  * limitations under the License.
  ************************************************************************/
 
-/**
- * @file
- *
- * Common definitions for all sample_app coverage tests
- */
-
-#ifndef SAMPLE_APP_COVERAGETEST_COMMON_H
-#define SAMPLE_APP_COVERAGETEST_COMMON_H
-
 /*
- * Includes
- */
+** File: string.h
+**
+** Purpose:
+** "Override" file for the system string.h file
+**
+** Notes:
+** This would provide stub functions for those normally found
+** in string.h.  In this case, it is only providing a stub for
+** strncpy().
+*/
 
-#include "utassert.h"
-#include "uttest.h"
-#include "utstubs.h"
+#ifndef OVERRIDE_STRING_H
+#define OVERRIDE_STRING_H
 
-#include "setup.h"
-#include "eventcheck.h"
+#include "OCS_string.h"
 
-#include "cfe.h"
-#include "sample_app_eventids.h"
-#include "sample_app.h"
-#include "sample_app_dispatch.h"
-#include "sample_app_cmds.h"
-#include "sample_app_utils.h"
-#include "sample_app_msgids.h"
-#include "sample_app_msg.h"
-#include "sample_app_tbl.h"
+/* ----------------------------------------- */
+/* mappings for declarations in string.h     */
+/* ----------------------------------------- */
 
-/*
- * Macro to add a test case to the list of tests to execute
- */
-#define ADD_TEST(test) UtTest_Add((Test_##test), Sample_UT_Setup, Sample_UT_TearDown, #test)
+#define strncpy OCS_strncpy
 
-#endif /* SAMPLE_APP_COVERAGETEST_COMMON_H */
+#endif

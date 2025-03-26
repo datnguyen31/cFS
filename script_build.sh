@@ -12,5 +12,4 @@ echo "Using simulation: $SIMULATION"
 
 make distclean
 make SIMULATION=$SIMULATION prep
-make
 make install

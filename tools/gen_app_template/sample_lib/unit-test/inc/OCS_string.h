@@ -16,36 +16,25 @@
  * limitations under the License.
  ************************************************************************/
 
-/**
- * @file
- *
- * Auto-Generated stub implementations for functions defined in sample_app header
- */
-
-#include "sample_app.h"
-#include "utgenstub.h"
-
 /*
- * ----------------------------------------------------
- * Generated stub function for SAMPLE_APP_Init()
- * ----------------------------------------------------
- */
-CFE_Status_t SAMPLE_APP_Init(void)
-{
-    UT_GenStub_SetupReturnBuffer(SAMPLE_APP_Init, CFE_Status_t);
+** File: string.h
+**
+** Purpose:
+** "Override" file for the system string.h file
+**
+** Notes:
+** This would provide stub functions for those normally found
+** in string.h.  In this case, it is only providing a stub for
+** strncpy().
+*/
 
-    UT_GenStub_Execute(SAMPLE_APP_Init, Basic, NULL);
+#ifndef OSC_STRING_H
+#define OSC_STRING_H
 
-    return UT_GenStub_GetReturnValue(SAMPLE_APP_Init, CFE_Status_t);
-}
+/* ----------------------------------------- */
+/* prototypes normally declared in string.h  */
+/* ----------------------------------------- */
 
-/*
- * ----------------------------------------------------
- * Generated stub function for SAMPLE_APP_Main()
- * ----------------------------------------------------
- */
-void SAMPLE_APP_Main(void)
-{
+extern char *OCS_strncpy(char *dest, const char *src, unsigned long size);
 
-    UT_GenStub_Execute(SAMPLE_APP_Main, Basic, NULL);
-}
+#endif

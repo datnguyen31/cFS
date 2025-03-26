@@ -33,9 +33,6 @@
 #include "sample_app_utils.h"
 #include "sample_app_msg.h"
 
-/* The sample_lib module provides the SAMPLE_Function() prototype */
-#include "sample_lib.h"
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 /*                                                                            */
 /*  Purpose:                                                                  */
@@ -46,8 +43,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * *  * * * * * * *  * *  * * * * */
 CFE_Status_t SAMPLE_APP_SendHkCmd(const SAMPLE_APP_SendHkCmd_t *Msg)
 {
-    int i;
-
     /*
     ** Get command execution counters...
     */
@@ -59,14 +54,6 @@ CFE_Status_t SAMPLE_APP_SendHkCmd(const SAMPLE_APP_SendHkCmd_t *Msg)
     */
     CFE_SB_TimeStampMsg(CFE_MSG_PTR(SAMPLE_APP_Data.HkTlm.TelemetryHeader));
     CFE_SB_TransmitMsg(CFE_MSG_PTR(SAMPLE_APP_Data.HkTlm.TelemetryHeader), true);
-
-    /*
-    ** Manage any pending table loads, validations, etc.
-    */
-    for (i = 0; i < SAMPLE_APP_NUMBER_OF_TABLES; i++)
-    {
-        CFE_TBL_Manage(SAMPLE_APP_Data.TblHandles[i]);
-    }
 
     return CFE_SUCCESS;
 }
@@ -99,61 +86,6 @@ CFE_Status_t SAMPLE_APP_ResetCountersCmd(const SAMPLE_APP_ResetCountersCmd_t *Ms
     SAMPLE_APP_Data.ErrCounter = 0;
 
     CFE_EVS_SendEvent(SAMPLE_APP_RESET_INF_EID, CFE_EVS_EventType_INFORMATION, "SAMPLE: RESET command");
-
-    return CFE_SUCCESS;
-}
-
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
-/*                                                                            */
-/*  Purpose:                                                                  */
-/*         This function Process Ground Station Command                       */
-/*                                                                            */
-/* * * * * * * * * * * * * * * * * * * * * * * *  * * * * * * *  * *  * * * * */
-CFE_Status_t SAMPLE_APP_ProcessCmd(const SAMPLE_APP_ProcessCmd_t *Msg)
-{
-    CFE_Status_t               status;
-    void *                     TblAddr;
-    SAMPLE_APP_ExampleTable_t *TblPtr;
-    const char *               TableName = "SAMPLE_APP.ExampleTable";
-
-    /* Sample Use of Example Table */
-
-    status = CFE_TBL_GetAddress(&TblAddr, SAMPLE_APP_Data.TblHandles[0]);
-
-    if (status < CFE_SUCCESS)
-    {
-        CFE_ES_WriteToSysLog("Sample App: Fail to get table address: 0x%08lx", (unsigned long)status);
-        return status;
-    }
-
-    TblPtr = TblAddr;
-    CFE_ES_WriteToSysLog("Sample App: Example Table Value 1: %d  Value 2: %d", TblPtr->Int1, TblPtr->Int2);
-
-    SAMPLE_APP_GetCrc(TableName);
-
-    status = CFE_TBL_ReleaseAddress(SAMPLE_APP_Data.TblHandles[0]);
-    if (status != CFE_SUCCESS)
-    {
-        CFE_ES_WriteToSysLog("Sample App: Fail to release table address: 0x%08lx", (unsigned long)status);
-        return status;
-    }
-
-    /* Invoke a function provided by SAMPLE_APP_LIB */
-    SAMPLE_LIB_Function();
-
-    return CFE_SUCCESS;
-}
-
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
-/*                                                                            */
-/* A simple example command that displays a passed-in value                   */
-/*                                                                            */
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
-CFE_Status_t SAMPLE_APP_DisplayParamCmd(const SAMPLE_APP_DisplayParamCmd_t *Msg)
-{
-    CFE_EVS_SendEvent(SAMPLE_APP_VALUE_INF_EID, CFE_EVS_EventType_INFORMATION,
-                      "SAMPLE_APP: ValU32=%lu, ValI16=%d, ValStr=%s", (unsigned long)Msg->Payload.ValU32,
-                      (int)Msg->Payload.ValI16, Msg->Payload.ValStr);
 
     return CFE_SUCCESS;
 }
