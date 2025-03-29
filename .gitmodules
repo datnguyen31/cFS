@@ -54,3 +54,6 @@
 [submodule "apps/io_lib"]
 	path = apps/io_lib
 	url = ./apps/io_lib/
+[submodule "apps/edr"]
+	path = apps/edr
+	url = ./apps/edr/
