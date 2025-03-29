@@ -41,7 +41,7 @@
 /**
  * @brief Last official release.
  */
-#define SAMPLE_LIB_LAST_OFFICIAL "v1.1.0"
+#define SAMPLE_LIB_LAST_OFFICIAL "v1.0.0"
 
 /*!
  * @brief Mission revision.

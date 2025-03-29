@@ -72,15 +72,3 @@ int32 SAMPLE_LIB_Init(void)
 
     return CFE_SUCCESS;
 }
-
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-/*                                                                 */
-/* Sample Lib function                                             */
-/*                                                                 */
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-int32 SAMPLE_LIB_Function(void)
-{
-    OS_printf("SAMPLE_LIB_Function called, buffer=\'%s\'\n", SAMPLE_LIB_Buffer);
-
-    return CFE_SUCCESS;
-}
