@@ -42,7 +42,7 @@ SAMPLE_APP_Data_t SAMPLE_APP_Data;
 /* Application entry point and main process loop                              */
 /*                                                                            */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  * *  * * * * **/
-void SAMPLE_APP_Main(void)
+void SAMPLE_AppMain(void)
 {
     CFE_Status_t     status;
     CFE_SB_Buffer_t *SBBufPtr;
@@ -57,7 +57,7 @@ void SAMPLE_APP_Main(void)
     ** If the Initialization fails, set the RunStatus to
     ** CFE_ES_RunStatus_APP_ERROR and the App will not enter the RunLoop
     */
-    status = SAMPLE_APP_Init();
+    status = SAMPLE_AppInit();
     if (status != CFE_SUCCESS)
     {
         SAMPLE_APP_Data.RunStatus = CFE_ES_RunStatus_APP_ERROR;
@@ -107,7 +107,7 @@ void SAMPLE_APP_Main(void)
 /* Initialization                                                             */
 /*                                                                            */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
-CFE_Status_t SAMPLE_APP_Init(void)
+CFE_Status_t SAMPLE_AppInit(void)
 {
     CFE_Status_t status;
     char         VersionString[SAMPLE_APP_CFG_MAX_VERSION_STR_LEN];

@@ -84,10 +84,10 @@ extern SAMPLE_APP_Data_t SAMPLE_APP_Data;
 /*
 ** Local function prototypes.
 **
-** Note: Except for the entry point (SAMPLE_APP_Main), these
+** Note: Except for the entry point (SAMPLE_AppMain), these
 **       functions are not called from any other source module.
 */
-void         SAMPLE_APP_Main(void);
-CFE_Status_t SAMPLE_APP_Init(void);
+void         SAMPLE_AppMain(void);
+CFE_Status_t SAMPLE_AppInit(void);
 
 #endif /* SAMPLE_APP_H */
