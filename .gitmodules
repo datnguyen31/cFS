@@ -45,3 +45,6 @@
 [submodule "apps/mpc"]
 	path = apps/mpc
 	url = ./apps/mpc/
+[submodule "apps/gnc"]
+	path = apps/gnc
+	url = ./apps/gnc/
