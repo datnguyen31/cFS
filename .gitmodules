@@ -48,3 +48,9 @@
 [submodule "apps/gnc"]
 	path = apps/gnc
 	url = ./apps/gnc/
+[submodule "apps/eqt_lib"]
+	path = apps/eqt_lib
+	url = ./apps/eqt_lib/
+[submodule "apps/io_lib"]
+	path = apps/io_lib
+	url = ./apps/io_lib/
