@@ -29,4 +29,6 @@
 */
 #include "sample_app.h"
 
+bool         SAMPLE_APP_VerifyCmdLength(const CFE_MSG_Message_t *MsgPtr, size_t ExpectedLength);
+
 #endif /* SAMPLE_APP_UTILS_H */

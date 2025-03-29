@@ -42,7 +42,7 @@
 /**
  * @brief Last official release.
  */
-#define SAMPLE_APP_LAST_OFFICIAL "v1.1.0"
+#define SAMPLE_APP_LAST_OFFICIAL "v1.0.0"
 
 /*!
  * @brief Mission revision.

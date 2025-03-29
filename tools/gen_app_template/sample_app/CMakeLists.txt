@@ -1,12 +1,13 @@
 project(CFE_SAMPLE_APP C)
 
 set(APP_SRC_FILES
-  fsw/src/sample_app.c
   fsw/src/sample_app_cmds.c
+  fsw/src/sample_app_scheds.c
   fsw/src/sample_app_utils.c
+  fsw/src/sample_app.c
 )
 
-if (CFE_EDS_ENABLED_BUILD)
+if(CFE_EDS_ENABLED_BUILD)
   list(APPEND APP_SRC_FILES
     fsw/src/sample_app_eds_dispatch.c
   )
@@ -28,6 +29,6 @@ add_cfe_tables(sample_app fsw/tables/sample_app_tbl.c)
 # Note that this is an app, and therefore does not provide
 # stub functions, as other entities would not typically make
 # direct function calls into this application.
-if (ENABLE_UNIT_TESTS)
+if(ENABLE_UNIT_TESTS)
   add_subdirectory(unit-test)
-endif (ENABLE_UNIT_TESTS)
+endif(ENABLE_UNIT_TESTS)

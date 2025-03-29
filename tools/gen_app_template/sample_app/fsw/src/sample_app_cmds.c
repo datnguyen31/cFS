@@ -27,35 +27,51 @@
 #include "sample_app.h"
 #include "sample_app_cmds.h"
 #include "sample_app_msgids.h"
-#include "sample_app_eventids.h"
+#include "../inc/sample_app_eventids.h"
 #include "sample_app_version.h"
 #include "sample_app_tbl.h"
 #include "sample_app_utils.h"
 #include "sample_app_msg.h"
 
+static CFE_Status_t SAMPLE_APP_ResetCountersCmd(const SAMPLE_APP_ResetCountersCmd_t *Msg);
+static CFE_Status_t SAMPLE_APP_NoopCmd(const SAMPLE_APP_NoopCmd_t *Msg);
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 /*                                                                            */
-/*  Purpose:                                                                  */
-/*         This function is triggered in response to a task telemetry request */
-/*         from the housekeeping task. This function will gather the Apps     */
-/*         telemetry, packetize it and send it to the housekeeping task via   */
-/*         the software bus                                                   */
-/* * * * * * * * * * * * * * * * * * * * * * * *  * * * * * * *  * *  * * * * */
-CFE_Status_t SAMPLE_APP_SendHkCmd(const SAMPLE_APP_SendHkCmd_t *Msg)
+/* SAMPLE ground commands                                                     */
+/*                                                                            */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
+void SAMPLE_APP_ProcessGroundCommand(const CFE_SB_Buffer_t *SBBufPtr)
 {
-    /*
-    ** Get command execution counters...
-    */
-    SAMPLE_APP_Data.HkTlm.Payload.CommandErrorCounter = SAMPLE_APP_Data.ErrCounter;
-    SAMPLE_APP_Data.HkTlm.Payload.CommandCounter      = SAMPLE_APP_Data.CmdCounter;
+    CFE_MSG_FcnCode_t CommandCode = 0;
+
+    CFE_MSG_GetFcnCode(&SBBufPtr->Msg, &CommandCode);
 
     /*
-    ** Send housekeeping telemetry packet...
+    ** Process SAMPLE app ground commands
     */
-    CFE_SB_TimeStampMsg(CFE_MSG_PTR(SAMPLE_APP_Data.HkTlm.TelemetryHeader));
-    CFE_SB_TransmitMsg(CFE_MSG_PTR(SAMPLE_APP_Data.HkTlm.TelemetryHeader), true);
+    switch (CommandCode)
+    {
+        case SAMPLE_APP_NOOP_CC:
+            if (SAMPLE_APP_VerifyCmdLength(&SBBufPtr->Msg, sizeof(SAMPLE_APP_NoopCmd_t)))
+            {
+                SAMPLE_APP_NoopCmd((const SAMPLE_APP_NoopCmd_t *)SBBufPtr);
+            }
+            break;
 
-    return CFE_SUCCESS;
+        case SAMPLE_APP_RESET_COUNTERS_CC:
+            if (SAMPLE_APP_VerifyCmdLength(&SBBufPtr->Msg, sizeof(SAMPLE_APP_ResetCountersCmd_t)))
+            {
+                SAMPLE_APP_ResetCountersCmd((const SAMPLE_APP_ResetCountersCmd_t *)SBBufPtr);
+            }
+            break;
+
+            /* default case already found during FC vs length test */
+        default:
+            CFE_EVS_SendEvent(SAMPLE_APP_CC_ERR_EID, CFE_EVS_EventType_ERROR, "Invalid ground command code: CC = %d",
+                              CommandCode);
+            break;
+    }
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
@@ -65,7 +81,7 @@ CFE_Status_t SAMPLE_APP_SendHkCmd(const SAMPLE_APP_SendHkCmd_t *Msg)
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 CFE_Status_t SAMPLE_APP_NoopCmd(const SAMPLE_APP_NoopCmd_t *Msg)
 {
-    SAMPLE_APP_Data.CmdCounter++;
+    SAMPLE_AppData.CmdCounter++;
 
     CFE_EVS_SendEvent(SAMPLE_APP_NOOP_INF_EID, CFE_EVS_EventType_INFORMATION, "SAMPLE: NOOP command %s",
                       SAMPLE_APP_VERSION);
@@ -82,8 +98,8 @@ CFE_Status_t SAMPLE_APP_NoopCmd(const SAMPLE_APP_NoopCmd_t *Msg)
 /* * * * * * * * * * * * * * * * * * * * * * * *  * * * * * * *  * *  * * * * */
 CFE_Status_t SAMPLE_APP_ResetCountersCmd(const SAMPLE_APP_ResetCountersCmd_t *Msg)
 {
-    SAMPLE_APP_Data.CmdCounter = 0;
-    SAMPLE_APP_Data.ErrCounter = 0;
+    SAMPLE_AppData.CmdCounter = 0;
+    SAMPLE_AppData.ErrCounter = 0;
 
     CFE_EVS_SendEvent(SAMPLE_APP_RESET_INF_EID, CFE_EVS_EventType_INFORMATION, "SAMPLE: RESET command");
 

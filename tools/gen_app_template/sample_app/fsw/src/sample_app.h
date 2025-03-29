@@ -42,6 +42,15 @@
 ** Type Definitions
 *************************************************************************/
 
+typedef struct
+{
+    bool            Active;
+    CFE_SB_PipeId_t Id;
+    uint16          Depth;
+    char            Name[OS_MAX_API_NAME];
+    int32           Timeout;
+} SAMPLE_PipeAttb_t;
+
 /*
 ** Global Data
 */
@@ -66,19 +75,13 @@ typedef struct
     /*
     ** Operational data (not reported in housekeeping)...
     */
-    CFE_SB_PipeId_t CommandPipe;
-
-    /*
-    ** Initialization data (not reported in housekeeping)...
-    */
-    char   PipeName[CFE_MISSION_MAX_API_LEN];
-    uint16 PipeDepth;
-} SAMPLE_APP_Data_t;
+    SAMPLE_PipeAttb_t CommandPipe;
+} SAMPLE_AppData_t;
 
 /*
 ** Global data structure
 */
-extern SAMPLE_APP_Data_t SAMPLE_APP_Data;
+extern SAMPLE_AppData_t SAMPLE_AppData;
 
 /****************************************************************************/
 /*

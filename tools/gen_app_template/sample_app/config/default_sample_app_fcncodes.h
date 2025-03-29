@@ -35,9 +35,16 @@
 /*
 ** Sample App command codes
 */
-#define SAMPLE_APP_NOOP_CC           0
-#define SAMPLE_APP_RESET_COUNTERS_CC 1
-#define SAMPLE_APP_PROCESS_CC        2
-#define SAMPLE_APP_DISPLAY_PARAM_CC  3
+
+typedef enum
+{
+    SAMPLE_APP_NOOP_CC           = 0,
+    SAMPLE_APP_RESET_COUNTERS_CC = 1,
+} SAMPLE_GroundCommandCode_t;
+
+typedef enum
+{
+    SAMPLE_APP_INTERNAL_HK_CC = 0,
+} SAMPLE_SchedCommandCode_t;
 
 #endif

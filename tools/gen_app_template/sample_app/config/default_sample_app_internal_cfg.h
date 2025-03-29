@@ -33,7 +33,9 @@
 #define SAMPLE_APP_INTERNAL_CFG_H
 
 /***********************************************************************/
-#define SAMPLE_APP_PIPE_DEPTH 32 /* Depth of the Command Pipe for Application */
+#define SAMPLE_APP_CMD_PIPE_DEPTH 32 /* Depth of the Command Pipe for Application */
+
+#define SAMPLE_APP_CMD_PIPE_TIMEOUT -1
 
 #define SAMPLE_APP_NUMBER_OF_TABLES 1 /* Number of Example Table(s) */
 

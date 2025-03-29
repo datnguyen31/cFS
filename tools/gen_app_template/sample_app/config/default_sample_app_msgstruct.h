@@ -74,7 +74,7 @@ typedef struct
 typedef struct
 {
     CFE_MSG_CommandHeader_t CommandHeader; /**< \brief Command header */
-} SAMPLE_APP_SendHkCmd_t;
+} SAMPLE_APP_SchedCmd_t;
 
 typedef struct
 {
