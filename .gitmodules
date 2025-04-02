@@ -57,3 +57,6 @@
 [submodule "libs/io_lib"]
 	path = libs/io_lib
 	url = ./libs/io_lib/
+[submodule "apps/era"]
+	path = apps/era
+	url = ./apps/era/
