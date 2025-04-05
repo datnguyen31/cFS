@@ -20,8 +20,10 @@ SCRIPT_DIR=$(cd `dirname $0` && pwd)
 
 if [ "$code_dir_choice" -eq 1 ]; then
     CODE_DIR=./sample_app
+    INSTALL_DIR=../../apps/
 elif [ "$code_dir_choice" -eq 2 ]; then
     CODE_DIR=./sample_lib
+    INSTALL_DIR=../../libs/
 else
     echo "Invalid choice. Exiting."
     exit 1
@@ -57,7 +59,7 @@ find "$NEW_DIR" -type f | while IFS= read -r file; do
     fi
 done
 
-cp -r $COMPONENT_NAME_LOWER ../../apps/ && rm -rf $COMPONENT_NAME_LOWER
+cp -r $COMPONENT_NAME_LOWER $INSTALL_DIR && rm -rf $COMPONENT_NAME_LOWER
 
 echo "generate_template.sh complete!"
 echo ""
