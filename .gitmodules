@@ -42,3 +42,27 @@
 	path = tools/tblCRCTool
 	url = https://github.com/nasa/tblCRCTool.git
   branch = main
+[submodule "apps/mpc"]
+	path = apps/mpc
+	url = ./apps/mpc/
+[submodule "apps/gnc"]
+	path = apps/gnc
+	url = ./apps/gnc/
+[submodule "apps/edr"]
+	path = apps/edr
+	url = ./apps/edr/
+[submodule "libs/eqt_lib"]
+	path = libs/eqt_lib
+	url = ./libs/eqt_lib/
+[submodule "libs/io_lib"]
+	path = libs/io_lib
+	url = ./libs/io_lib/
+[submodule "apps/era"]
+	path = apps/era
+	url = ./apps/era/
+[submodule "apps/pcdu"]
+	path = apps/pcdu
+	url = ./apps/pcdu/
+[submodule "apps/imu"]
+	path = apps/imu
+	url = ./apps/imu/

@@ -1,12 +1,11 @@
----
 Language:        Cpp
-AccessModifierOffset: -4
-AlignAfterOpenBracket: Align
+AccessModifierOffset: -2
+AlignAfterOpenBracket: true
 AlignConsecutiveAssignments: true
 AlignConsecutiveDeclarations: true
 AlignConsecutiveMacros: true
-AlignEscapedNewlines: Left
-AlignOperands:   true
+AlignEscapedNewlines: Right
+AlignOperands: true
 AlignTrailingComments: true
 AllowAllParametersOfDeclarationOnNextLine: true
 AllowShortBlocksOnASingleLine: Empty
@@ -22,7 +21,7 @@ BreakBeforeBinaryOperators: None
 BreakBeforeBraces: Allman
 BreakBeforeTernaryOperators: true
 BreakStringLiterals: true
-ColumnLimit:     120
+ColumnLimit:     100
 CommentPragmas:  ''
 ContinuationIndentWidth: 4
 Cpp11BracedListStyle: true
@@ -47,7 +46,7 @@ PenaltyBreakFirstLessLess: 120
 PenaltyBreakString: 1000
 PenaltyExcessCharacter: 1000000
 PenaltyReturnTypeOnItsOwnLine: 60
-PointerAlignment: Right
+PointerAlignment: Left
 ReflowComments:  true
 SortIncludes:    false
 SpaceAfterCStyleCast: false
@@ -62,5 +61,3 @@ SpacesInSquareBrackets: false
 Standard:        c++11
 TabWidth:        8
 UseTab:          Never
-...
-
