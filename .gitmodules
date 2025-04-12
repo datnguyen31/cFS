@@ -63,3 +63,6 @@
 [submodule "apps/pcdu"]
 	path = apps/pcdu
 	url = ./apps/pcdu/
+[submodule "apps/imu"]
+	path = apps/imu
+	url = ./apps/imu/
