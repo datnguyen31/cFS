@@ -31,6 +31,7 @@
 
 /* for "strncpy()" */
 #include <string.h>
+#include <stdio.h>
 
 /*************************************************************************
 ** Private Data Structures

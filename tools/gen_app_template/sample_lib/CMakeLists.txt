@@ -1,7 +1,11 @@
 project(CFE_SAMPLE_LIB C)
 
+set(APP_SRC_FILES
+  fsw/src/sample_lib.c
+)
+
 # Create the app module
-add_cfe_app(sample_lib fsw/src/sample_lib.c)
+add_cfe_app(sample_lib ${APP_SRC_FILES})
 
 # The API to this library (which may be invoked/referenced from other apps)
 # is stored in fsw/share.  Using "target_include_directories" is the
