@@ -60,3 +60,6 @@
 [submodule "apps/era"]
 	path = apps/era
 	url = ./apps/era/
+[submodule "apps/pcdu"]
+	path = apps/pcdu
+	url = ./apps/pcdu/
