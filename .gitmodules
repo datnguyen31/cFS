@@ -63,9 +63,9 @@
 [submodule "apps/pcdu"]
 	path = apps/pcdu
 	url = ./apps/pcdu/
-[submodule "apps/imu"]
-	path = apps/imu
-	url = ./apps/imu/
 [submodule "libs/public_lib"]
 	path = libs/public_lib
 	url = ./libs/public_lib/
+[submodule "apps/imu0"]
+	path = apps/imu0
+	url = ./apps/imu0/
