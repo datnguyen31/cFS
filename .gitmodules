@@ -69,3 +69,6 @@
 [submodule "apps/imu0"]
 	path = apps/imu0
 	url = ./apps/imu0/
+[submodule "apps/mfc0"]
+	path = apps/mfc0
+	url = ./apps/mfc0/
