@@ -32,6 +32,8 @@
 #include "sample_app_msgids.h"
 #include "sample_app_msg.h"
 
+extern SAMPLE_AppData_t SAMPLE_AppData;
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 /*                                                                            */
 /*  Purpose:                                                                  */

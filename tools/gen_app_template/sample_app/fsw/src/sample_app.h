@@ -78,11 +78,6 @@ typedef struct
     SAMPLE_PipeAttb_t CommandPipe;
 } SAMPLE_AppData_t;
 
-/*
-** Global data structure
-*/
-extern SAMPLE_AppData_t SAMPLE_AppData;
-
 /****************************************************************************/
 /*
 ** Local function prototypes.
