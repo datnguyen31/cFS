@@ -75,3 +75,6 @@
 [submodule "apps/sch"]
 	path = apps/sch
 	url = ./apps/sch
+[submodule "apps/perc"]
+	path = apps/perc
+	url = ./apps/perc/
