@@ -20,7 +20,7 @@ endif()
 # Create the app module
 add_cfe_app(sample_app ${APP_SRC_FILES})
 
-target_include_directories(sample_app PUBLIC fsw/inc)
+target_include_directories(sample_app PUBLIC fsw/share)
 
 # Add table
 add_cfe_tables(sample_app fsw/tables/sample_app_tbl.c)

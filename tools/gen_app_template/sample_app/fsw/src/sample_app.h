@@ -38,18 +38,12 @@
 #include "sample_app_msgids.h"
 #include "sample_app_msg.h"
 
+#include "../inc/sample_app_config.h"
+#include "../inc/sample_app_facility.h"
+
 /************************************************************************
 ** Type Definitions
 *************************************************************************/
-
-typedef struct
-{
-    bool            Active;
-    CFE_SB_PipeId_t Id;
-    uint16          Depth;
-    char            Name[OS_MAX_API_NAME];
-    int32           Timeout;
-} SAMPLE_PipeAttb_t;
 
 /*
 ** Global Data
