@@ -78,3 +78,6 @@
 [submodule "apps/perc"]
 	path = apps/perc
 	url = ./apps/perc/
+[submodule "apps/hs"]
+	path = apps/hs
+	url = ./apps/hs/
