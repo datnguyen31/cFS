@@ -81,3 +81,9 @@
 [submodule "apps/hs"]
 	path = apps/hs
 	url = ./apps/hs/
+[submodule "apps/mastc"]
+	path = apps/mastc
+	url = ./apps/mastc/
+[submodule "apps/viit"]
+	path = apps/viit
+	url = ./apps/viit/
