@@ -87,3 +87,6 @@
 [submodule "apps/viit"]
 	path = apps/viit
 	url = ./apps/viit/
+[submodule "apps/evm"]
+	path = apps/evm
+	url = ./apps/evm
