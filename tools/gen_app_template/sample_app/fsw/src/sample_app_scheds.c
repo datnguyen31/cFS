@@ -30,8 +30,10 @@ void SAMPLE_APP_ProcessSchedCommand(const CFE_SB_Buffer_t* SBBufPtr)
             break;
 
         default:
-            CFE_EVS_SendEvent(SAMPLE_APP_CC_ERR_EID, CFE_EVS_EventType_ERROR,
-                              "Invalid ground command code: CC = %d", CommandCode);
+            CFE_EVS_SendEvent(SAMPLE_APP_CC_ERR_EID,
+                              CFE_EVS_EventType_ERROR,
+                              "Invalid ground command code: CC = %d",
+                              CommandCode);
             break;
     }
 }

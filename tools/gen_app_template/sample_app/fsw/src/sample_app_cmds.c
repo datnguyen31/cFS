@@ -40,17 +40,17 @@ static CFE_Status_t SAMPLE_APP_NoopCmd(const SAMPLE_APP_NoopCmd_t* Msg);
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 /*                                                                            */
-/* SAMPLE ground commands                                                     */
+/* SAMPLE operate commands                                                     */
 /*                                                                            */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
-void SAMPLE_APP_ProcessGroundCommand(const CFE_SB_Buffer_t* SBBufPtr)
+void SAMPLE_APP_ProcessOperCommand(const CFE_SB_Buffer_t* SBBufPtr)
 {
     CFE_MSG_FcnCode_t CommandCode = 0;
 
     CFE_MSG_GetFcnCode(&SBBufPtr->Msg, &CommandCode);
 
     /*
-    ** Process SAMPLE app ground commands
+    ** Process SAMPLE app operate commands
     */
     switch (CommandCode)
     {
@@ -70,8 +70,10 @@ void SAMPLE_APP_ProcessGroundCommand(const CFE_SB_Buffer_t* SBBufPtr)
 
             /* default case already found during FC vs length test */
         default:
-            CFE_EVS_SendEvent(SAMPLE_APP_CC_ERR_EID, CFE_EVS_EventType_ERROR,
-                              "Invalid ground command code: CC = %d", CommandCode);
+            CFE_EVS_SendEvent(SAMPLE_APP_CC_ERR_EID,
+                              CFE_EVS_EventType_ERROR,
+                              "Invalid ground command code: CC = %d",
+                              CommandCode);
             break;
     }
 }
@@ -85,8 +87,10 @@ CFE_Status_t SAMPLE_APP_NoopCmd(const SAMPLE_APP_NoopCmd_t* Msg)
 {
     SAMPLE_AppData.CmdCounter++;
 
-    CFE_EVS_SendEvent(SAMPLE_APP_NOOP_INF_EID, CFE_EVS_EventType_INFORMATION,
-                      "SAMPLE: NOOP command %s", SAMPLE_APP_VERSION);
+    CFE_EVS_SendEvent(SAMPLE_APP_NOOP_INF_EID,
+                      CFE_EVS_EventType_INFORMATION,
+                      "SAMPLE: NOOP command %s",
+                      SAMPLE_APP_VERSION);
 
     return CFE_SUCCESS;
 }
@@ -103,7 +107,8 @@ CFE_Status_t SAMPLE_APP_ResetCountersCmd(const SAMPLE_APP_ResetCountersCmd_t* Ms
     SAMPLE_AppData.CmdCounter = 0;
     SAMPLE_AppData.ErrCounter = 0;
 
-    CFE_EVS_SendEvent(SAMPLE_APP_RESET_INF_EID, CFE_EVS_EventType_INFORMATION,
+    CFE_EVS_SendEvent(SAMPLE_APP_RESET_INF_EID,
+                      CFE_EVS_EventType_INFORMATION,
                       "SAMPLE: RESET command");
 
     return CFE_SUCCESS;

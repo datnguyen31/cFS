@@ -27,17 +27,21 @@
 
 /* Development Build Macro Definitions */
 
-#define SAMPLE_APP_BUILD_NUMBER    50 /*!< Development Build: Number of commits since baseline */
-#define SAMPLE_APP_BUILD_BASELINE  "equuleus-rc1" /*!< Development Build: git tag that is the base for the current development */
-#define SAMPLE_APP_BUILD_DEV_CYCLE "equuleus-rc2" /**< @brief Development: Release name for current development cycle */
-#define SAMPLE_APP_BUILD_CODENAME  "Equuleus" /**< @brief: Development: Code name for the current build */
+#define SAMPLE_APP_BUILD_NUMBER 50 /*!< Development Build: Number of commits since baseline */
+#define SAMPLE_APP_BUILD_BASELINE                                                                  \
+    "equuleus-rc1" /*!< Development Build: git tag that is the base for the current development */
+#define SAMPLE_APP_BUILD_DEV_CYCLE                                                                 \
+    "equuleus-rc2" /**< @brief Development: Release name for current development cycle */
+#define SAMPLE_APP_BUILD_CODENAME                                                                  \
+    "Equuleus" /**< @brief: Development: Code name for the current build */
 
 /*
  * Version Macros, see \ref cfsversions for definitions.
  */
-#define SAMPLE_APP_MAJOR_VERSION 1  /*!< @brief Major version number. */
-#define SAMPLE_APP_MINOR_VERSION 1  /*!< @brief Minor version number. */
-#define SAMPLE_APP_REVISION      0  /*!< @brief Revision version number. Value of 0 indicates a development version.*/
+#define SAMPLE_APP_MAJOR_VERSION 1 /*!< @brief Major version number. */
+#define SAMPLE_APP_MINOR_VERSION 1 /*!< @brief Minor version number. */
+#define SAMPLE_APP_REVISION                                                                        \
+    0 /*!< @brief Revision version number. Value of 0 indicates a development version.*/
 
 /**
  * @brief Last official release.
@@ -48,14 +52,16 @@
  * @brief Mission revision.
  *
  * Reserved for mission use to denote patches/customizations as needed.
- * Values 1-254 are reserved for mission use to denote patches/customizations as needed. NOTE: Reserving 0 and 0xFF for
- * cFS open-source development use (pending resolution of nasa/cFS#440)
+ * Values 1-254 are reserved for mission use to denote patches/customizations as needed. NOTE:
+ * Reserving 0 and 0xFF for cFS open-source development use (pending resolution of nasa/cFS#440)
  */
 #define SAMPLE_APP_MISSION_REV 0xFF
 
-#define SAMPLE_APP_STR_HELPER(x) #x /*!< @brief Helper function to concatenate strings from integer macros */
-#define SAMPLE_APP_STR(x) \
-    SAMPLE_APP_STR_HELPER(x) /*!< @brief Helper function to concatenate strings from integer macros */
+#define SAMPLE_APP_STR_HELPER(x)                                                                   \
+    #x /*!< @brief Helper function to concatenate strings from integer macros */
+#define SAMPLE_APP_STR(x)                                                                          \
+    SAMPLE_APP_STR_HELPER(                                                                         \
+        x) /*!< @brief Helper function to concatenate strings from integer macros */
 
 /*! @brief Development Build Version Number.
  * @details Baseline git tag + Number of commits since baseline. @n
@@ -65,9 +71,9 @@
 
 /**
  * @brief Max Version String length.
- * 
+ *
  * Maximum length that an OSAL version string can be.
- * 
+ *
  */
 #define SAMPLE_APP_CFG_MAX_VERSION_STR_LEN 256
 

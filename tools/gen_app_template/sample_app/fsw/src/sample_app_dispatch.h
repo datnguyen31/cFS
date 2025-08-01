@@ -31,6 +31,6 @@
 #include "cfe.h"
 #include "sample_app_msg.h"
 
-void SAMPLE_APP_TaskPipe(const CFE_SB_Buffer_t *SBBufPtr);
+void SAMPLE_APP_TaskPipe(const CFE_SB_Buffer_t* SBBufPtr);
 
 #endif /* SAMPLE_APP_DISPATCH_H */

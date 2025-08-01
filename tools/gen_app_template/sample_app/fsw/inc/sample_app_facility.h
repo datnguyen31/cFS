@@ -5,7 +5,7 @@
 
 typedef struct
 {
-    bool            Active;
+    uint8           State;
     CFE_SB_PipeId_t Id;
     uint16          Depth;
     char            Name[OS_MAX_API_NAME];
