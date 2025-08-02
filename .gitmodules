@@ -90,3 +90,6 @@
 [submodule "apps/evm"]
 	path = apps/evm
 	url = ./apps/evm
+[submodule "apps/msp"]
+	path = apps/msp
+	url = ./apps/msp
