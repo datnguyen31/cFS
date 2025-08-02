@@ -1,4 +1,4 @@
-project(CFE_SAMPLE_APP C)
+project(CFE_SAMPLE C)
 
 set(APP_SRC_FILES
   fsw/src/sample_app_cmds.c
@@ -9,10 +9,10 @@ set(APP_SRC_FILES
 )
 
 # Create the app module
-add_cfe_app(sample_app ${APP_SRC_FILES})
+add_cfe_app(sample ${APP_SRC_FILES})
 
-target_include_directories(sample_app PUBLIC fsw/inc)
-target_include_directories(sample_app PUBLIC fsw/share)
+target_include_directories(sample PUBLIC fsw/inc)
+target_include_directories(sample PUBLIC fsw/share)
 
 # If UT is enabled, then add the tests from the subdirectory
 # Note that this is an app, and therefore does not provide
