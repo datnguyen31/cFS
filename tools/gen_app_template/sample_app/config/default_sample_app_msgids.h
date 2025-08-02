@@ -29,12 +29,12 @@
 /**
  * Telecommand
  */
-#define SAMPLE_APP_OPR_CMD_MID   0x1882
+#define SAMPLE_APP_OPER_CMD_MID  0x1882
 #define SAMPLE_APP_SCHED_CMD_MID 0x1883
 
 /**
  * Telemetry
  */
-#define SAMPLE_APP_HK_TLM_MID    0x0882
+#define SAMPLE_APP_HK_TLM_MID 0x0882
 
 #endif

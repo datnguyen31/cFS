@@ -18,7 +18,7 @@
 
 /**
  * @file
- *   This file contains the prototypes for the Sample App Ground Command-handling functions
+ *   This file contains the prototypes for the Sample App Operating Command-handling functions
  */
 
 #ifndef SAMPLE_APP_CMDS_H
@@ -30,6 +30,6 @@
 #include "cfe_error.h"
 #include "sample_app_msg.h"
 
-void SAMPLE_APP_ProcessOperCommand(const CFE_SB_Buffer_t *SBBufPtr);
+void SAMPLE_APP_ProcessOperCommand(const CFE_SB_Buffer_t* SBBufPtr);
 
 #endif /* SAMPLE_APP_CMDS_H */

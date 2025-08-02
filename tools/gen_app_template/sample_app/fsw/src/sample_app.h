@@ -39,7 +39,9 @@
 #include "sample_app_msg.h"
 
 #include "../inc/sample_app_config.h"
+#include "../inc/sample_app_eventids.h"
 #include "../inc/sample_app_facility.h"
+#include "../inc/sample_app_version.h"
 
 /************************************************************************
 ** Type Definitions
@@ -53,8 +55,8 @@ typedef struct
     /*
     ** Command interface counters...
     */
-    uint8 CmdCounter;
-    uint8 ErrCounter;
+    uint8 CmdAcceptedCnt;
+    uint8 CmdRejectedCnt;
 
     /*
     ** Housekeeping telemetry packet...
@@ -70,7 +72,7 @@ typedef struct
     ** Operational data (not reported in housekeeping)...
     */
     SAMPLE_PipeAttb_t CommandPipe;
-} SAMPLE_AppData_t;
+} SAMPLE_GlobalData_t;
 
 /****************************************************************************/
 /*

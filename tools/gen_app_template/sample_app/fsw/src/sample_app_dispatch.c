@@ -32,7 +32,7 @@
 #include "sample_app_msgids.h"
 #include "sample_app_msg.h"
 
-extern SAMPLE_AppData_t SAMPLE_AppData;
+extern SAMPLE_GlobalData_t SAMPLE_GlobalData;
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 /*                                                                            */
@@ -49,7 +49,7 @@ void SAMPLE_APP_TaskPipe(const CFE_SB_Buffer_t* SBBufPtr)
 
     switch (CFE_SB_MsgIdToValue(MsgId))
     {
-        case SAMPLE_APP_OPR_CMD_MID:
+        case SAMPLE_APP_OPER_CMD_MID:
             SAMPLE_APP_ProcessOperCommand(SBBufPtr);
             break;
 

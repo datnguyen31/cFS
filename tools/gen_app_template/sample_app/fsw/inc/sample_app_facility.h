@@ -12,4 +12,15 @@ typedef struct
     int32           Timeout;
 } SAMPLE_PipeAttb_t;
 
+typedef struct
+{
+    bool                      State;
+    CFE_TBL_Handle_t          Handle;
+    char                      Name[OS_MAX_API_NAME];
+    char                      Path[OS_MAX_PATH_LEN];
+    uint32                    Size;
+    uint16                    TblOpt;
+    CFE_TBL_CallbackFuncPtr_t ValidateFunc;
+} SAMPLE_TblAttb_t;
+
 #endif

@@ -25,17 +25,15 @@
 ** Include Files:
 */
 #include "sample_app.h"
+#include "sample_utils.h"
 #include "sample_app_cmds.h"
-#include "sample_app_utils.h"
-#include "../inc/sample_app_eventids.h"
 #include "sample_app_dispatch.h"
 #include "sample_app_tbl.h"
-#include "sample_app_version.h"
 
 /*
 ** global data
 */
-SAMPLE_AppData_t SAMPLE_AppData;
+SAMPLE_GlobalData_t SAMPLE_GlobalData;
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  * *  * * * * **/
 /*                                                                            */
@@ -60,13 +58,13 @@ void SAMPLE_AppMain(void)
     status = SAMPLE_AppInit();
     if (status != CFE_SUCCESS)
     {
-        SAMPLE_AppData.RunStatus = CFE_ES_RunStatus_APP_ERROR;
+        SAMPLE_GlobalData.RunStatus = CFE_ES_RunStatus_APP_ERROR;
     }
 
     /*
     ** Sample App Runloop
     */
-    while (CFE_ES_RunLoop(&SAMPLE_AppData.RunStatus) == true)
+    while (CFE_ES_RunLoop(&SAMPLE_GlobalData.RunStatus) == true)
     {
         /*
         ** Performance Log Exit Stamp
@@ -75,7 +73,7 @@ void SAMPLE_AppMain(void)
 
         /* Pend on receipt of command packet */
         status =
-            CFE_SB_ReceiveBuffer(&SBBufPtr, SAMPLE_AppData.CommandPipe.Id, CFE_SB_PEND_FOREVER);
+            CFE_SB_ReceiveBuffer(&SBBufPtr, SAMPLE_GlobalData.CommandPipe.Id, CFE_SB_PEND_FOREVER);
 
         /*
         ** Performance Log Entry Stamp
@@ -92,7 +90,7 @@ void SAMPLE_AppMain(void)
                               CFE_EVS_EventType_ERROR,
                               "SAMPLE APP: SB Pipe Read Error, App Will Exit");
 
-            SAMPLE_AppData.RunStatus = CFE_ES_RunStatus_APP_ERROR;
+            SAMPLE_GlobalData.RunStatus = CFE_ES_RunStatus_APP_ERROR;
         }
     }
 
@@ -101,7 +99,7 @@ void SAMPLE_AppMain(void)
     */
     CFE_ES_PerfLogExit(SAMPLE_APP_PERF_ID);
 
-    CFE_ES_ExitApp(SAMPLE_AppData.RunStatus);
+    CFE_ES_ExitApp(SAMPLE_GlobalData.RunStatus);
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  */
@@ -110,109 +108,25 @@ void SAMPLE_AppMain(void)
 /*                                                                            */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 
-static CFE_Status_t SAMPLE_APP_EsInit(void)
-{
-    return CFE_SUCCESS;
-}
-
-static CFE_Status_t SAMPLE_APP_EvsInit(void)
-{
-    CFE_Status_t status = CFE_SUCCESS;
-
-    status = CFE_EVS_Register(NULL, 0, CFE_EVS_EventFilter_BINARY);
-    if (status != CFE_SUCCESS)
-    {
-        CFE_ES_WriteToSysLog("Sample App: Error Registering Events, RC = 0x%08lX\n",
-                             (unsigned long)status);
-    }
-
-    return status;
-}
-static CFE_Status_t SAMPLE_APP_SbInit(void)
-{
-    CFE_Status_t status = CFE_SUCCESS;
-
-    /*
-    ** Create Software Bus message pipe.
-    */
-    status = CFE_SB_CreatePipe(&SAMPLE_AppData.CommandPipe.Id,
-                               SAMPLE_AppData.CommandPipe.Depth,
-                               SAMPLE_AppData.CommandPipe.Name);
-    if (status != CFE_SUCCESS)
-    {
-        CFE_EVS_SendEvent(SAMPLE_APP_CR_PIPE_ERR_EID,
-                          CFE_EVS_EventType_ERROR,
-                          "Sample App: Error creating SB Command Pipe, RC = 0x%08lX",
-                          (unsigned long)status);
-    }
-    else
-    {
-        /*
-         ** Subscribe to Housekeeping request commands
-         */
-        status = CFE_SB_Subscribe(CFE_SB_ValueToMsgId(SAMPLE_APP_SCHED_CMD_MID),
-                                  SAMPLE_AppData.CommandPipe.Id);
-        if (status != CFE_SUCCESS)
-        {
-            CFE_EVS_SendEvent(SAMPLE_APP_SUB_HK_ERR_EID,
-                              CFE_EVS_EventType_ERROR,
-                              "Sample App: Error Subscribing to Schedule request, RC = 0x%08lX",
-                              (unsigned long)status);
-        }
-
-        /*
-         ** Subscribe to ground command packets
-         */
-        status = CFE_SB_Subscribe(CFE_SB_ValueToMsgId(SAMPLE_APP_GND_CMD_MID),
-                                  SAMPLE_AppData.CommandPipe.Id);
-        if (status != CFE_SUCCESS)
-        {
-            CFE_EVS_SendEvent(SAMPLE_APP_SUB_CMD_ERR_EID,
-                              CFE_EVS_EventType_ERROR,
-                              "Sample App: Error Subscribing to Commands, RC = 0x%08lX",
-                              (unsigned long)status);
-        }
-    }
-
-    /*
-     ** Initialize telemery
-     */
-    CFE_MSG_Init(CFE_MSG_PTR(SAMPLE_AppData.HkTlm.TelemetryHeader),
-                 CFE_SB_ValueToMsgId(SAMPLE_APP_HK_TLM_MID),
-                 sizeof(SAMPLE_AppData.HkTlm));
-
-    return status;
-}
-
-static CFE_Status_t SAMPLE_APP_TblInit(void)
-{
-    return CFE_SUCCESS;
-}
-
-CFE_Status_t SAMPLE_APP_TimeInit(void)
-{
-    return CFE_SUCCESS;
-}
-
 CFE_Status_t SAMPLE_AppInit(void)
 {
     CFE_Status_t status = CFE_SUCCESS;
 
     /* Zero out the global data structure */
-    memset(&SAMPLE_AppData, 0, sizeof(SAMPLE_AppData));
+    memset(&SAMPLE_GlobalData, 0, sizeof(SAMPLE_GlobalData));
 
-    SAMPLE_AppData.RunStatus = CFE_ES_RunStatus_APP_RUN;
+    SAMPLE_GlobalData.RunStatus = CFE_ES_RunStatus_APP_RUN;
 
     /*
     ** Initialize app configuration data
     */
-    SAMPLE_AppData.CommandPipe.Depth = SAMPLE_APP_CMD_PIPE_DEPTH;
+    SAMPLE_GlobalData.CommandPipe.Depth = SAMPLE_APP_CMD_PIPE_DEPTH;
 
-    strncpy(SAMPLE_AppData.CommandPipe.Name,
+    strncpy(SAMPLE_GlobalData.CommandPipe.Name,
             "SAMPLE_APP_CMD_PIPE",
-            sizeof(SAMPLE_AppData.CommandPipe.Name));
-    SAMPLE_AppData.CommandPipe.Name[sizeof(SAMPLE_AppData.CommandPipe.Name) - 1] = 0;
-    SAMPLE_AppData.CommandPipe.Timeout = SAMPLE_APP_CMD_PIPE_TIMEOUT;
+            sizeof(SAMPLE_GlobalData.CommandPipe.Name));
+    SAMPLE_GlobalData.CommandPipe.Name[sizeof(SAMPLE_GlobalData.CommandPipe.Name) - 1] = 0;
+    SAMPLE_GlobalData.CommandPipe.Timeout = SAMPLE_APP_CMD_PIPE_TIMEOUT;
 
     status = SAMPLE_APP_EvsInit();
     if (status != CFE_SUCCESS)
