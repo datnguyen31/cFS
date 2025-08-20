@@ -102,6 +102,29 @@ bool SAMPLE_APP_VerifyTlmLength(const CFE_MSG_Message_t* MsgPtr, size_t Expected
     return (result);
 }
 
+CFE_Status_t SAMPLE_APP_DataInit(void)
+{
+    CFE_Status_t status = CFE_SUCCESS;
+
+    /* Zero out the global data structure */
+    memset(&SAMPLE_GlobalData, 0, sizeof(SAMPLE_GlobalData));
+
+    SAMPLE_GlobalData.RunStatus = CFE_ES_RunStatus_APP_RUN;
+
+    /*
+    ** Initialize app configuration data
+    */
+    SAMPLE_GlobalData.CommandPipe.Depth = SAMPLE_APP_CMD_PIPE_DEPTH;
+
+    strncpy(SAMPLE_GlobalData.CommandPipe.Name,
+            "SAMPLE_APP_CMD_PIPE",
+            sizeof(SAMPLE_GlobalData.CommandPipe.Name));
+    SAMPLE_GlobalData.CommandPipe.Name[sizeof(SAMPLE_GlobalData.CommandPipe.Name) - 1] = 0;
+    SAMPLE_GlobalData.CommandPipe.Timeout = SAMPLE_APP_CMD_PIPE_TIMEOUT;
+
+    return status;
+}
+
 CFE_Status_t SAMPLE_APP_EsInit(void)
 {
     return CFE_SUCCESS;

@@ -31,6 +31,7 @@
 
 bool         SAMPLE_APP_VerifyCmdLength(const CFE_MSG_Message_t* MsgPtr, size_t ExpectedLength);
 bool         SAMPLE_APP_VerifyTlmLength(const CFE_MSG_Message_t* MsgPtr, size_t ExpectedLength);
+CFE_Status_t SAMPLE_APP_DataInit(void);
 CFE_Status_t SAMPLE_APP_EsInit(void);
 CFE_Status_t SAMPLE_APP_EvsInit(void);
 CFE_Status_t SAMPLE_APP_SbInit(void);

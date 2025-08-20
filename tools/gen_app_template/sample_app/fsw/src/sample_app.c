@@ -112,22 +112,6 @@ CFE_Status_t SAMPLE_AppInit(void)
 {
     CFE_Status_t status = CFE_SUCCESS;
 
-    /* Zero out the global data structure */
-    memset(&SAMPLE_GlobalData, 0, sizeof(SAMPLE_GlobalData));
-
-    SAMPLE_GlobalData.RunStatus = CFE_ES_RunStatus_APP_RUN;
-
-    /*
-    ** Initialize app configuration data
-    */
-    SAMPLE_GlobalData.CommandPipe.Depth = SAMPLE_APP_CMD_PIPE_DEPTH;
-
-    strncpy(SAMPLE_GlobalData.CommandPipe.Name,
-            "SAMPLE_APP_CMD_PIPE",
-            sizeof(SAMPLE_GlobalData.CommandPipe.Name));
-    SAMPLE_GlobalData.CommandPipe.Name[sizeof(SAMPLE_GlobalData.CommandPipe.Name) - 1] = 0;
-    SAMPLE_GlobalData.CommandPipe.Timeout = SAMPLE_APP_CMD_PIPE_TIMEOUT;
-
     status = SAMPLE_APP_EvsInit();
     if (status != CFE_SUCCESS)
     {
