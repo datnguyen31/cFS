@@ -104,7 +104,7 @@ bool SAMPLE_APP_VerifyTlmLength(const CFE_MSG_Message_t* MsgPtr, size_t Expected
 
 CFE_Status_t SAMPLE_APP_DataInit(void)
 {
-    CFE_Status_t status = CFE_SUCCESS;
+    CFE_Status_t rc = CFE_SUCCESS;
 
     /* Zero out the global data structure */
     memset(&SAMPLE_GlobalData, 0, sizeof(SAMPLE_GlobalData));
@@ -122,7 +122,7 @@ CFE_Status_t SAMPLE_APP_DataInit(void)
     SAMPLE_GlobalData.CommandPipe.Name[sizeof(SAMPLE_GlobalData.CommandPipe.Name) - 1] = 0;
     SAMPLE_GlobalData.CommandPipe.Timeout = SAMPLE_APP_CMD_PIPE_TIMEOUT;
 
-    return status;
+    return rc;
 }
 
 CFE_Status_t SAMPLE_APP_EsInit(void)
@@ -132,60 +132,60 @@ CFE_Status_t SAMPLE_APP_EsInit(void)
 
 CFE_Status_t SAMPLE_APP_EvsInit(void)
 {
-    CFE_Status_t status = CFE_SUCCESS;
+    CFE_Status_t rc = CFE_SUCCESS;
 
-    status = CFE_EVS_Register(SAMPLE_EventFilters, 0, CFE_EVS_EventFilter_BINARY);
-    if (status != CFE_SUCCESS)
+    rc = CFE_EVS_Register(SAMPLE_EventFilters, 0, CFE_EVS_EventFilter_BINARY);
+    if (rc != CFE_SUCCESS)
     {
         CFE_ES_WriteToSysLog("Sample App: Error Registering Events, RC = 0x%08lX\n",
-                             (unsigned long)status);
+                             (unsigned long)rc);
     }
 
-    return status;
+    return rc;
 }
 CFE_Status_t SAMPLE_APP_SbInit(void)
 {
-    CFE_Status_t status = CFE_SUCCESS;
+    CFE_Status_t rc = CFE_SUCCESS;
 
     /*
     ** Create Software Bus message pipe.
     */
-    status = CFE_SB_CreatePipe(&SAMPLE_GlobalData.CommandPipe.Id,
-                               SAMPLE_GlobalData.CommandPipe.Depth,
-                               SAMPLE_GlobalData.CommandPipe.Name);
-    if (status != CFE_SUCCESS)
+    rc = CFE_SB_CreatePipe(&SAMPLE_GlobalData.CommandPipe.Id,
+                           SAMPLE_GlobalData.CommandPipe.Depth,
+                           SAMPLE_GlobalData.CommandPipe.Name);
+    if (rc != CFE_SUCCESS)
     {
         CFE_EVS_SendEvent(SAMPLE_APP_CR_PIPE_ERR_EID,
                           CFE_EVS_EventType_ERROR,
                           "Error creating SB Command Pipe, RC = 0x%08lX",
-                          (unsigned long)status);
+                          (unsigned long)rc);
     }
     else
     {
         /*
          ** Subscribe to Housekeeping request commands
          */
-        status = CFE_SB_Subscribe(CFE_SB_ValueToMsgId(SAMPLE_APP_SCHED_CMD_MID),
-                                  SAMPLE_GlobalData.CommandPipe.Id);
-        if (status != CFE_SUCCESS)
+        rc = CFE_SB_Subscribe(CFE_SB_ValueToMsgId(SAMPLE_APP_SCHED_CMD_MID),
+                              SAMPLE_GlobalData.CommandPipe.Id);
+        if (rc != CFE_SUCCESS)
         {
             CFE_EVS_SendEvent(SAMPLE_APP_SUB_HK_ERR_EID,
                               CFE_EVS_EventType_ERROR,
                               "Error Subscribing to Schedule request, RC = 0x%08lX",
-                              (unsigned long)status);
+                              (unsigned long)rc);
         }
 
         /*
          ** Subscribe to operating command packets
          */
-        status = CFE_SB_Subscribe(CFE_SB_ValueToMsgId(SAMPLE_APP_OPER_CMD_MID),
-                                  SAMPLE_GlobalData.CommandPipe.Id);
-        if (status != CFE_SUCCESS)
+        rc = CFE_SB_Subscribe(CFE_SB_ValueToMsgId(SAMPLE_APP_OPER_CMD_MID),
+                              SAMPLE_GlobalData.CommandPipe.Id);
+        if (rc != CFE_SUCCESS)
         {
             CFE_EVS_SendEvent(SAMPLE_APP_SUB_CMD_ERR_EID,
                               CFE_EVS_EventType_ERROR,
                               "Sample App: Error Subscribing to Commands, RC = 0x%08lX",
-                              (unsigned long)status);
+                              (unsigned long)rc);
         }
     }
 
@@ -196,7 +196,7 @@ CFE_Status_t SAMPLE_APP_SbInit(void)
                  CFE_SB_ValueToMsgId(SAMPLE_APP_HK_TLM_MID),
                  sizeof(SAMPLE_GlobalData.HkTlm));
 
-    return status;
+    return rc;
 }
 
 CFE_Status_t SAMPLE_APP_TblInit(void)

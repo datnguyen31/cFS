@@ -42,7 +42,7 @@ SAMPLE_GlobalData_t SAMPLE_GlobalData;
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  * *  * * * * **/
 void SAMPLE_AppMain(void)
 {
-    CFE_Status_t     status;
+    CFE_Status_t     rc;
     CFE_SB_Buffer_t* SBBufPtr;
 
     /*
@@ -55,8 +55,8 @@ void SAMPLE_AppMain(void)
     ** If the Initialization fails, set the RunStatus to
     ** CFE_ES_RunStatus_APP_ERROR and the App will not enter the RunLoop
     */
-    status = SAMPLE_AppInit();
-    if (status != CFE_SUCCESS)
+    rc = SAMPLE_AppInit();
+    if (rc != CFE_SUCCESS)
     {
         SAMPLE_GlobalData.RunStatus = CFE_ES_RunStatus_APP_ERROR;
     }
@@ -72,15 +72,14 @@ void SAMPLE_AppMain(void)
         CFE_ES_PerfLogExit(SAMPLE_APP_PERF_ID);
 
         /* Pend on receipt of command packet */
-        status =
-            CFE_SB_ReceiveBuffer(&SBBufPtr, SAMPLE_GlobalData.CommandPipe.Id, CFE_SB_PEND_FOREVER);
+        rc = CFE_SB_ReceiveBuffer(&SBBufPtr, SAMPLE_GlobalData.CommandPipe.Id, CFE_SB_PEND_FOREVER);
 
         /*
         ** Performance Log Entry Stamp
         */
         CFE_ES_PerfLogEntry(SAMPLE_APP_PERF_ID);
 
-        if (status == CFE_SUCCESS)
+        if (rc == CFE_SUCCESS)
         {
             SAMPLE_APP_TaskPipe(SBBufPtr);
         }
@@ -110,44 +109,44 @@ void SAMPLE_AppMain(void)
 
 CFE_Status_t SAMPLE_AppInit(void)
 {
-    CFE_Status_t status = CFE_SUCCESS;
+    CFE_Status_t rc = CFE_SUCCESS;
 
-    status = SAMPLE_APP_EvsInit();
-    if (status != CFE_SUCCESS)
+    rc = SAMPLE_APP_EvsInit();
+    if (rc != CFE_SUCCESS)
     {
-        return status;
+        return rc;
     }
 
-    status = SAMPLE_APP_EsInit();
-    if (status != CFE_SUCCESS)
+    rc = SAMPLE_APP_EsInit();
+    if (rc != CFE_SUCCESS)
     {
-        return status;
+        return rc;
     }
 
-    status = SAMPLE_APP_SbInit();
-    if (status != CFE_SUCCESS)
+    rc = SAMPLE_APP_SbInit();
+    if (rc != CFE_SUCCESS)
     {
-        return status;
+        return rc;
     }
 
-    status = SAMPLE_APP_TblInit();
-    if (status != CFE_SUCCESS)
+    rc = SAMPLE_APP_TblInit();
+    if (rc != CFE_SUCCESS)
     {
-        return status;
+        return rc;
     }
 
-    status = SAMPLE_APP_TimeInit();
-    if (status != CFE_SUCCESS)
+    rc = SAMPLE_APP_TimeInit();
+    if (rc != CFE_SUCCESS)
     {
-        return status;
+        return rc;
     }
 
-    if (status == CFE_SUCCESS)
+    if (rc == CFE_SUCCESS)
     {
         CFE_EVS_SendEvent(SAMPLE_STARTUP_INF_EID,
                           CFE_EVS_EventType_INFORMATION,
                           "Sample App Initialized. Version %s",
                           SAMPLE_APP_LAST_OFFICIAL);
     }
-    return status;
+    return rc;
 }
