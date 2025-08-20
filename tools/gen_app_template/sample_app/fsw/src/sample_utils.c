@@ -189,13 +189,6 @@ CFE_Status_t SAMPLE_APP_SbInit(void)
         }
     }
 
-    /*
-     ** Initialize telemery
-     */
-    CFE_MSG_Init(CFE_MSG_PTR(SAMPLE_GlobalData.HkTlm.TelemetryHeader),
-                 CFE_SB_ValueToMsgId(SAMPLE_APP_HK_TLM_MID),
-                 sizeof(SAMPLE_GlobalData.HkTlm));
-
     return rc;
 }
 
