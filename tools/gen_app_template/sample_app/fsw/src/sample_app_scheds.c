@@ -45,17 +45,25 @@ void SAMPLE_APP_ProcessSchedCommand(const CFE_SB_Buffer_t* SBBufPtr)
 /* * * * * * * * * * * * * * * * * * * * * * * *  * * * * * * *  * *  * * * * */
 CFE_Status_t SAMPLE_APP_SendHkCmd(const SAMPLE_APP_SchedCmd_t* Msg)
 {
+    SAMPLE_APP_HkTlm_t HkTlm;
+
+    /*
+     ** Initialize telemery
+     */
+    CFE_MSG_Init(CFE_MSG_PTR(HkTlm.TelemetryHeader),
+                 CFE_SB_ValueToMsgId(SAMPLE_APP_HK_TLM_MID),
+                 sizeof(HkTlm));
     /*
     ** Get command execution counters...
     */
-    SAMPLE_GlobalData.HkTlm.Payload.CommandErrorCounter = SAMPLE_GlobalData.CmdRejectedCnt;
-    SAMPLE_GlobalData.HkTlm.Payload.CommandCounter      = SAMPLE_GlobalData.CmdAcceptedCnt;
+    HkTlm.Payload.CmdRejectedCnt = SAMPLE_GlobalData.CmdRejectedCnt;
+    HkTlm.Payload.CmdAcceptedCnt = SAMPLE_GlobalData.CmdAcceptedCnt;
 
     /*
     ** Send housekeeping telemetry packet...
     */
-    CFE_SB_TimeStampMsg(CFE_MSG_PTR(SAMPLE_GlobalData.HkTlm.TelemetryHeader));
-    CFE_SB_TransmitMsg(CFE_MSG_PTR(SAMPLE_GlobalData.HkTlm.TelemetryHeader), true);
+    CFE_SB_TimeStampMsg(CFE_MSG_PTR(HkTlm.TelemetryHeader));
+    CFE_SB_TransmitMsg(CFE_MSG_PTR(HkTlm.TelemetryHeader), true);
 
     return CFE_SUCCESS;
 }

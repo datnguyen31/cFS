@@ -59,11 +59,6 @@ typedef struct
     uint8 CmdRejectedCnt;
 
     /*
-    ** Housekeeping telemetry packet...
-    */
-    SAMPLE_APP_HkTlm_t HkTlm;
-
-    /*
     ** Run Status variable used in the main processing loop
     */
     uint32 RunStatus;
