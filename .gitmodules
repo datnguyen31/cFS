@@ -93,3 +93,6 @@
 [submodule "apps/msp"]
 	path = apps/msp
 	url = ./apps/msp
+[submodule "apps/mso"]
+	path = apps/mso
+	url = ./apps/mso/
