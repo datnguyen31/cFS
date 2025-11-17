@@ -3,6 +3,6 @@
 
 #include "cfe.h"
 
-void SAMPLE_APP_ProcessSchedCommand(const CFE_SB_Buffer_t *SBBufPtr);
+void SAMPLE_APP_ProcessSchedCommand(const CFE_SB_Buffer_t* SBBufPtr);
 
 #endif /* SAMPLE_APP_SCHEDS_H */

@@ -40,7 +40,7 @@ typedef enum
 {
     SAMPLE_APP_NOOP_CC           = 0,
     SAMPLE_APP_RESET_COUNTERS_CC = 1,
-} SAMPLE_GroundCommandCode_t;
+} SAMPLE_OperateCommandCode_t;
 
 typedef enum
 {

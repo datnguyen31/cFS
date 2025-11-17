@@ -63,6 +63,36 @@
 [submodule "apps/pcdu"]
 	path = apps/pcdu
 	url = ./apps/pcdu/
-[submodule "apps/imu"]
-	path = apps/imu
-	url = ./apps/imu/
+[submodule "libs/public_lib"]
+	path = libs/public_lib
+	url = ./libs/public_lib/
+[submodule "apps/imu0"]
+	path = apps/imu0
+	url = ./apps/imu0/
+[submodule "apps/mfc0"]
+	path = apps/mfc0
+	url = ./apps/mfc0/
+[submodule "apps/sch"]
+	path = apps/sch
+	url = ./apps/sch
+[submodule "apps/perc"]
+	path = apps/perc
+	url = ./apps/perc/
+[submodule "apps/hs"]
+	path = apps/hs
+	url = ./apps/hs/
+[submodule "apps/mastc"]
+	path = apps/mastc
+	url = ./apps/mastc/
+[submodule "apps/viit"]
+	path = apps/viit
+	url = ./apps/viit/
+[submodule "apps/evm"]
+	path = apps/evm
+	url = ./apps/evm
+[submodule "apps/msp"]
+	path = apps/msp
+	url = ./apps/msp
+[submodule "apps/mso"]
+	path = apps/mso
+	url = ./apps/mso/

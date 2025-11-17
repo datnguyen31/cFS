@@ -18,7 +18,7 @@
 
 /**
  * \file
- *   This file contains the source code for the Sample App Ground Command-handling functions
+ *   This file contains the source code for the Sample App Operating Command-handling functions
  */
 
 /*
@@ -30,45 +30,49 @@
 #include "../inc/sample_app_eventids.h"
 #include "sample_app_version.h"
 #include "sample_app_tbl.h"
-#include "sample_app_utils.h"
+#include "sample_utils.h"
 #include "sample_app_msg.h"
 
-static CFE_Status_t SAMPLE_APP_ResetCountersCmd(const SAMPLE_APP_ResetCountersCmd_t *Msg);
-static CFE_Status_t SAMPLE_APP_NoopCmd(const SAMPLE_APP_NoopCmd_t *Msg);
+extern SAMPLE_GlobalData_t SAMPLE_GlobalData;
+
+static CFE_Status_t SAMPLE_APP_ResetCountersCmd(const SAMPLE_APP_ResetCountersCmd_t* Msg);
+static CFE_Status_t SAMPLE_APP_NoopCmd(const SAMPLE_APP_NoopCmd_t* Msg);
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 /*                                                                            */
-/* SAMPLE ground commands                                                     */
+/* SAMPLE operate commands                                                     */
 /*                                                                            */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
-void SAMPLE_APP_ProcessGroundCommand(const CFE_SB_Buffer_t *SBBufPtr)
+void SAMPLE_APP_ProcessOperCommand(const CFE_SB_Buffer_t* SBBufPtr)
 {
     CFE_MSG_FcnCode_t CommandCode = 0;
 
     CFE_MSG_GetFcnCode(&SBBufPtr->Msg, &CommandCode);
 
     /*
-    ** Process SAMPLE app ground commands
+    ** Process SAMPLE app operate commands
     */
     switch (CommandCode)
     {
         case SAMPLE_APP_NOOP_CC:
             if (SAMPLE_APP_VerifyCmdLength(&SBBufPtr->Msg, sizeof(SAMPLE_APP_NoopCmd_t)))
             {
-                SAMPLE_APP_NoopCmd((const SAMPLE_APP_NoopCmd_t *)SBBufPtr);
+                SAMPLE_APP_NoopCmd((const SAMPLE_APP_NoopCmd_t*)SBBufPtr);
             }
             break;
 
         case SAMPLE_APP_RESET_COUNTERS_CC:
             if (SAMPLE_APP_VerifyCmdLength(&SBBufPtr->Msg, sizeof(SAMPLE_APP_ResetCountersCmd_t)))
             {
-                SAMPLE_APP_ResetCountersCmd((const SAMPLE_APP_ResetCountersCmd_t *)SBBufPtr);
+                SAMPLE_APP_ResetCountersCmd((const SAMPLE_APP_ResetCountersCmd_t*)SBBufPtr);
             }
             break;
 
             /* default case already found during FC vs length test */
         default:
-            CFE_EVS_SendEvent(SAMPLE_APP_CC_ERR_EID, CFE_EVS_EventType_ERROR, "Invalid ground command code: CC = %d",
+            CFE_EVS_SendEvent(SAMPLE_APP_CC_ERR_EID,
+                              CFE_EVS_EventType_ERROR,
+                              "Invalid operating command code: CC = %d",
                               CommandCode);
             break;
     }
@@ -79,11 +83,13 @@ void SAMPLE_APP_ProcessGroundCommand(const CFE_SB_Buffer_t *SBBufPtr)
 /* SAMPLE NOOP commands                                                       */
 /*                                                                            */
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
-CFE_Status_t SAMPLE_APP_NoopCmd(const SAMPLE_APP_NoopCmd_t *Msg)
+CFE_Status_t SAMPLE_APP_NoopCmd(const SAMPLE_APP_NoopCmd_t* Msg)
 {
-    SAMPLE_AppData.CmdCounter++;
+    SAMPLE_GlobalData.CmdAcceptedCnt++;
 
-    CFE_EVS_SendEvent(SAMPLE_APP_NOOP_INF_EID, CFE_EVS_EventType_INFORMATION, "SAMPLE: NOOP command %s",
+    CFE_EVS_SendEvent(SAMPLE_APP_NOOP_INF_EID,
+                      CFE_EVS_EventType_INFORMATION,
+                      "SAMPLE: NOOP command %s",
                       SAMPLE_APP_VERSION);
 
     return CFE_SUCCESS;
@@ -96,12 +102,14 @@ CFE_Status_t SAMPLE_APP_NoopCmd(const SAMPLE_APP_NoopCmd_t *Msg)
 /*         part of the task telemetry.                                        */
 /*                                                                            */
 /* * * * * * * * * * * * * * * * * * * * * * * *  * * * * * * *  * *  * * * * */
-CFE_Status_t SAMPLE_APP_ResetCountersCmd(const SAMPLE_APP_ResetCountersCmd_t *Msg)
+CFE_Status_t SAMPLE_APP_ResetCountersCmd(const SAMPLE_APP_ResetCountersCmd_t* Msg)
 {
-    SAMPLE_AppData.CmdCounter = 0;
-    SAMPLE_AppData.ErrCounter = 0;
+    SAMPLE_GlobalData.CmdAcceptedCnt = 0;
+    SAMPLE_GlobalData.CmdRejectedCnt = 0;
 
-    CFE_EVS_SendEvent(SAMPLE_APP_RESET_INF_EID, CFE_EVS_EventType_INFORMATION, "SAMPLE: RESET command");
+    CFE_EVS_SendEvent(SAMPLE_APP_RESET_INF_EID,
+                      CFE_EVS_EventType_INFORMATION,
+                      "SAMPLE: RESET command");
 
     return CFE_SUCCESS;
 }

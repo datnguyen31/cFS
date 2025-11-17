@@ -26,8 +26,15 @@
 #include "cfe_core_api_base_msgids.h"
 #include "sample_app_topicids.h"
 
-#define SAMPLE_APP_GND_CMD_MID   0x1882
+/**
+ * Telecommand
+ */
+#define SAMPLE_APP_OPER_CMD_MID  0x1882
 #define SAMPLE_APP_SCHED_CMD_MID 0x1883
-#define SAMPLE_APP_HK_TLM_MID    0x0882
+
+/**
+ * Telemetry
+ */
+#define SAMPLE_APP_HK_TLM_MID 0x0882
 
 #endif

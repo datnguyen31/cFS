@@ -22,5 +22,5 @@ echo "Running Flight Software"
 if [ $DEBUG = true ]; then
     sudo gdb ./core-$MISSION
 else
-    sudo ./core-$MISSION
+    sudo taskset -c 0 ./core-$MISSION
 fi

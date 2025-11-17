@@ -32,6 +32,8 @@
 #include "sample_app_msgids.h"
 #include "sample_app_msg.h"
 
+extern SAMPLE_GlobalData_t SAMPLE_GlobalData;
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 /*                                                                            */
 /*  Purpose:                                                                  */
@@ -39,7 +41,7 @@
 /*     command pipe.                                                          */
 /*                                                                            */
 /* * * * * * * * * * * * * * * * * * * * * * * *  * * * * * * *  * *  * * * * */
-void SAMPLE_APP_TaskPipe(const CFE_SB_Buffer_t *SBBufPtr)
+void SAMPLE_APP_TaskPipe(const CFE_SB_Buffer_t* SBBufPtr)
 {
     CFE_SB_MsgId_t MsgId = CFE_SB_INVALID_MSG_ID;
 
@@ -47,8 +49,8 @@ void SAMPLE_APP_TaskPipe(const CFE_SB_Buffer_t *SBBufPtr)
 
     switch (CFE_SB_MsgIdToValue(MsgId))
     {
-        case SAMPLE_APP_GND_CMD_MID:
-            SAMPLE_APP_ProcessGroundCommand(SBBufPtr);
+        case SAMPLE_APP_OPER_CMD_MID:
+            SAMPLE_APP_ProcessOperCommand(SBBufPtr);
             break;
 
         case SAMPLE_APP_SCHED_CMD_MID:
@@ -56,8 +58,10 @@ void SAMPLE_APP_TaskPipe(const CFE_SB_Buffer_t *SBBufPtr)
             break;
 
         default:
-            CFE_EVS_SendEvent(SAMPLE_APP_MID_ERR_EID, CFE_EVS_EventType_ERROR,
-                              "SAMPLE: invalid command packet,MID = 0x%x", (unsigned int)CFE_SB_MsgIdToValue(MsgId));
+            CFE_EVS_SendEvent(SAMPLE_APP_MID_ERR_EID,
+                              CFE_EVS_EventType_ERROR,
+                              "SAMPLE: invalid command packet,MID = 0x%x",
+                              (unsigned int)CFE_SB_MsgIdToValue(MsgId));
             break;
     }
 }

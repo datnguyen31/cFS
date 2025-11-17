@@ -38,18 +38,14 @@
 #include "sample_app_msgids.h"
 #include "sample_app_msg.h"
 
+#include "../inc/sample_app_config.h"
+#include "../inc/sample_app_eventids.h"
+#include "../inc/sample_app_facility.h"
+#include "../inc/sample_app_version.h"
+
 /************************************************************************
 ** Type Definitions
 *************************************************************************/
-
-typedef struct
-{
-    bool            Active;
-    CFE_SB_PipeId_t Id;
-    uint16          Depth;
-    char            Name[OS_MAX_API_NAME];
-    int32           Timeout;
-} SAMPLE_PipeAttb_t;
 
 /*
 ** Global Data
@@ -59,13 +55,8 @@ typedef struct
     /*
     ** Command interface counters...
     */
-    uint8 CmdCounter;
-    uint8 ErrCounter;
-
-    /*
-    ** Housekeeping telemetry packet...
-    */
-    SAMPLE_APP_HkTlm_t HkTlm;
+    uint8 CmdAcceptedCnt;
+    uint8 CmdRejectedCnt;
 
     /*
     ** Run Status variable used in the main processing loop
@@ -76,12 +67,7 @@ typedef struct
     ** Operational data (not reported in housekeeping)...
     */
     SAMPLE_PipeAttb_t CommandPipe;
-} SAMPLE_AppData_t;
-
-/*
-** Global data structure
-*/
-extern SAMPLE_AppData_t SAMPLE_AppData;
+} SAMPLE_GlobalData_t;
 
 /****************************************************************************/
 /*
