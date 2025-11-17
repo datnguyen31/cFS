@@ -1,5 +1,8 @@
 Makefile
 build
+/apps/replace_file_target.sh
 /sample_defs
 .DS_Store
 .vscode
+kanpilot.toml
+-cppcheck-build-dir

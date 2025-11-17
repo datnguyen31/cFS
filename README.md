@@ -27,14 +27,25 @@ More information is available on the [cFS Website](<https://cfs.gsfc.nasa.gov>).
 
 ## Table of Contents
 
-- [References](#references-documentation)
-- [Release Notes](#release-notes)
-- [Open Source Roadmap](#open-source-roadmap)
-- [Upcoming Release](#upcoming-release)
-- [Getting Help](#getting-help)
-- [Setup](#setup)
-- [Build and Run](#build-and-run)
-- [Related Capability](#related-capability)
+- [Core Flight System - BUNDLE](#core-flight-system---bundle)
+  - [Distributions](#distributions)
+  - [Contact](#contact)
+  - [Table of Contents](#table-of-contents)
+  - [References Documentation](#references-documentation)
+  - [Release Notes](#release-notes)
+  - [Open-Source Roadmap](#open-source-roadmap)
+  - [Upcoming Release](#upcoming-release)
+    - [Next major release development features](#next-major-release-development-features)
+    - [Known Issues](#known-issues)
+  - [Getting Help](#getting-help)
+    - [Discussions](#discussions)
+    - [Join the mailing list](#join-the-mailing-list)
+    - [Contact the cFS Product Team](#contact-the-cfs-product-team)
+  - [Setup](#setup)
+  - [Build and Run](#build-and-run)
+    - [Send commands, receive telemetry](#send-commands-receive-telemetry)
+    - [Adding Custom Apps](#adding-custom-apps)
+  - [Related Capability](#related-capability)
 
 ## References Documentation
 
