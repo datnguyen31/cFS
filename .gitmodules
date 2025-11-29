@@ -84,9 +84,6 @@
 [submodule "apps/mastc"]
 	path = apps/mastc
 	url = ./apps/mastc/
-[submodule "apps/viit"]
-	path = apps/viit
-	url = ./apps/viit/
 [submodule "apps/evm"]
 	path = apps/evm
 	url = ./apps/evm
@@ -96,3 +93,6 @@
 [submodule "apps/mso"]
 	path = apps/mso
 	url = ./apps/mso/
+[submodule "apps/tkm"]
+	path = apps/tkm
+	url = ./apps/tkm
