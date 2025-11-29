@@ -96,3 +96,18 @@
 [submodule "apps/tkm"]
 	path = apps/tkm
 	url = ./apps/tkm
+[submodule "apps/cf"]
+	path = apps/cf
+	url = ./apps/cf/
+[submodule "apps/ds"]
+	path = apps/ds
+	url = ./apps/ds/
+[submodule "apps/fm"]
+	path = apps/fm
+	url = ./apps/fm/
+[submodule "apps/lc"]
+	path = apps/lc
+	url = ./apps/lc/
+[submodule "apps/sc"]
+	path = apps/sc
+	url = ./apps/sc/
