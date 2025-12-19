@@ -1,4 +1,0 @@
-#ifndef SAMPLE_APP_CONFIG_H
-#define SAMPLE_APP_CONFIG_H
-
-#endif
