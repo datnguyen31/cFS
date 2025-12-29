@@ -1,9 +1,11 @@
 Makefile
 build
 /apps/replace_file_target.sh
-/sample_defs
+/mission_sample_defs
+/mission_nomad_defs
 /tools/gen_app_template
 .DS_Store
 .vscode
+.legacy/
 kanpilot.toml
 -cppcheck-build-dir
