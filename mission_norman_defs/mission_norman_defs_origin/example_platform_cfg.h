@@ -1,7 +1,7 @@
 /************************************************************************
- * NASA Docket No. GSC-19,200-1, and identified as "cFS Draco"
+ * NASA Docket No. GSC-18,719-1, and identified as “core Flight System: Bootes”
  *
- * Copyright (c) 2023 United States Government as represented by the
+ * Copyright (c) 2020 United States Government as represented by the
  * Administrator of the National Aeronautics and Space Administration.
  * All Rights Reserved.
  *
@@ -1354,8 +1354,8 @@
 **       The cFE does not place a limit on the size of this parameter but it must be
 **       less than half of #CFE_PLATFORM_TBL_BUF_MEMORY_BYTES.
 */
-#define CFE_PLATFORM_TBL_MAX_DBL_TABLE_SIZE 16384
-
+// #define CFE_PLATFORM_TBL_MAX_DBL_TABLE_SIZE 16384
+#define CFE_PLATFORM_TBL_MAX_DBL_TABLE_SIZE 32768 // my_config
 /**
 **  \cfetblcfg Maximum Size Allowed for a Single Buffered Table
 **
@@ -1370,7 +1370,8 @@
 **       small enough to allow for #CFE_PLATFORM_TBL_MAX_SIMULTANEOUS_LOADS number of tables
 **       to fit into #CFE_PLATFORM_TBL_BUF_MEMORY_BYTES.
 */
-#define CFE_PLATFORM_TBL_MAX_SNGL_TABLE_SIZE 16384
+// #define CFE_PLATFORM_TBL_MAX_SNGL_TABLE_SIZE 16384
+#define CFE_PLATFORM_TBL_MAX_SNGL_TABLE_SIZE 32768 //my_config
 
 /**
 **  \cfetblcfg Maximum Number of Tables Allowed to be Registered

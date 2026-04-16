@@ -41,8 +41,8 @@
  * will _not_ be used.
  */
 
-#ifndef EXAMPLE_MISSION_CFG_H
-#define EXAMPLE_MISSION_CFG_H
+#ifndef MISSION_NORMAN_CFG_H
+#define MISSION_NORMAN_CFG_H
 
 /**
 **  \cfemissioncfg cFE Maximum length for pathnames within data exchange structures

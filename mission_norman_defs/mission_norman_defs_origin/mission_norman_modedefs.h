@@ -1,5 +1,5 @@
-#ifndef _mission_nomad_modedefs_h_
-#define _mission_nomad_modedefs_h_
+#ifndef _mission_norman_modedefs_h_
+#define _mission_norman_modedefs_h_
 
 #include "cfe.h"
 

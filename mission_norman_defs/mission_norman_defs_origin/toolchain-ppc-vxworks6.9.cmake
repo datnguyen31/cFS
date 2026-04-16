@@ -30,31 +30,31 @@ set(VXWORKS_TOOLS_PREFIX "${WIND_HOME}/gnu/${VXWORKS_GCC_VERSION}-vxworks-${CMAK
 
 # specify the cross compiler - adjust accord to compiler installation
 # This uses the compiler-wrapper toolchain that buildroot produces
-SET(SDKHOSTBINDIR               "${VXWORKS_TOOLS_PREFIX}/bin")
+set(SDKHOSTBINDIR               "${VXWORKS_TOOLS_PREFIX}/bin")
 set(TARGETSUFFIX                "${CMAKE_SYSTEM_PROCESSOR}")
 #set(VXWORKS_BSP_C_FLAGS           "-march=i686 -mtune=i686 -fno-common")
 #set(VXWORKS_BSP_CXX_FLAGS         ${VXWORKS_BSP_C_FLAGS})
 
-SET(CMAKE_C_COMPILER            "${SDKHOSTBINDIR}/cc${TARGETSUFFIX}")
-SET(CMAKE_CXX_COMPILER          "${SDKHOSTBINDIR}/c++${TARGETSUFFIX}")
-SET(CMAKE_LINKER                "${SDKHOSTBINDIR}/ld${TARGETSUFFIX}")
-SET(CMAKE_ASM_COMPILER          "${SDKHOSTBINDIR}/as${TARGETSUFFIX}")
-SET(CMAKE_AR                    "${SDKHOSTBINDIR}/ar${TARGETSUFFIX}")
-SET(CMAKE_OBJDUMP               "${SDKHOSTBINDIR}/objdump${TARGETSUFFIX}")
-SET(CMAKE_RANLIB                "${SDKHOSTBINDIR}/ranlib${TARGETSUFFIX}")
+set(CMAKE_C_COMPILER            "${SDKHOSTBINDIR}/cc${TARGETSUFFIX}")
+set(CMAKE_CXX_COMPILER          "${SDKHOSTBINDIR}/c++${TARGETSUFFIX}")
+set(CMAKE_LINKER                "${SDKHOSTBINDIR}/ld${TARGETSUFFIX}")
+set(CMAKE_ASM_COMPILER          "${SDKHOSTBINDIR}/as${TARGETSUFFIX}")
+set(CMAKE_AR                    "${SDKHOSTBINDIR}/ar${TARGETSUFFIX}")
+set(CMAKE_OBJDUMP               "${SDKHOSTBINDIR}/objdump${TARGETSUFFIX}")
+set(CMAKE_RANLIB                "${SDKHOSTBINDIR}/ranlib${TARGETSUFFIX}")
 
 # search for programs in the build host directories
-SET(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM   NEVER)
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM   NEVER)
 
 # for libraries and headers in the target directories
-SET(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY   ONLY)
-SET(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE   ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY   ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE   ONLY)
 
-SET(CMAKE_PREFIX_PATH                   /)
+set(CMAKE_PREFIX_PATH                   /)
 
 # these settings are specific to cFE/OSAL and determines which
 # abstraction layers are built when using this toolchain
-SET(CFE_SYSTEM_PSPNAME                  mcp750-vxworks)
+set(CFE_SYSTEM_PSPNAME                  mcp750-vxworks)
 
 include_directories(${WIND_BASE}/target/h/wrn/coreip)
 include_directories(${WIND_BASE}/target/h)

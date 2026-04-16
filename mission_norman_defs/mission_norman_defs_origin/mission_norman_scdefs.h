@@ -1,5 +1,5 @@
-#ifndef _mission_nomad_scdefs_h_
-#define _mission_nomad_scdefs_h_
+#ifndef _mission_norman_scdefs_h_
+#define _mission_norman_scdefs_h_
 
 #define NOMAD_RTS_CODE_BLOCK(idx) ((unsigned long)(idx) * 10UL)
 

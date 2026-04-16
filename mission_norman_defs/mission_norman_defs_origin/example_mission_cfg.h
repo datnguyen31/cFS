@@ -1,7 +1,7 @@
 /************************************************************************
- * NASA Docket No. GSC-19,200-1, and identified as "cFS Draco"
+ * NASA Docket No. GSC-18,719-1, and identified as “core Flight System: Bootes”
  *
- * Copyright (c) 2023 United States Government as represented by the
+ * Copyright (c) 2020 United States Government as represented by the
  * Administrator of the National Aeronautics and Space Administration.
  * All Rights Reserved.
  *
@@ -96,7 +96,7 @@
 **       This value should be kept as a multiple of 4, to maintain alignment of
 **       any possible neighboring fields without implicit padding.
 */
-#define CFE_MISSION_MAX_FILE_LEN 20
+#define CFE_MISSION_MAX_FILE_LEN 32
 
 /**
 **  \cfemissioncfg cFE Maximum length for API names within data exchange structures
@@ -354,7 +354,7 @@
 **       to exceed the max length.
 **
 */
-#define CFE_MISSION_SB_MAX_PIPES 32
+#define CFE_MISSION_SB_MAX_PIPES 64
 
 /******************************************************************************
  *   CFE Table Services (CFE_TBL) Application Public Definitions

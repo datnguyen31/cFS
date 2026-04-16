@@ -1,22 +1,9 @@
-CFE_APP, sc,      SC_AppMain,       SC,       50,     16384,  0x0,    0;
-!CFE_APP, evm,     EVM_AppMain,      EVM,      50,     16384,  0x0,    0;
-CFE_APP, msp,     MSP_AppMain,      MSP,      50,     16384,  0x0,    0;
-CFE_APP, mso,     MSO_AppMain,      MSO,      50,     16384,  0x0,    0;
-CFE_APP, hs,      HS_AppMain,       HS,       50,     16384,  0x0,    0;
-!CFE_LIB, math_lib,      MATH_LibInit,       MATH_LIB,       0,      0,      0x0,    0;
-CFE_LIB, io_lib,        IO_LibInit,         IO_LIB,         0,      0,      0x0,    0;
-CFE_LIB, eqt_lib,       EQT_LibInit,        EQT_LIB,        0,      0,      0x0,    0;
-CFE_LIB, gnc_lib,       GNC_LibInit,        GNC_LIB,        0,      0,      0x0,    0;
-CFE_APP, ci_lab,        CI_LAB_AppMain,     CI_LAB_APP,     60,     16384,  0x0,    0;
-CFE_APP, to_lab,        TO_LAB_AppMain,     TO_LAB_APP,     70,     16384,  0x0,    0;
-CFE_APP, sch_lab,       SCH_LAB_AppMain,    SCH_LAB_APP,    80,     16384,  0x0,    0;
-CFE_APP, mpc_app,       MPC_AppMain,        MPC_APP,        50,     16384,  0x0,    0;
-CFE_APP, sch,           SCH_AppMain,        SCH,            40,     16384,  0x0,    0;
-CFE_APP, pcdu_app,      PCDU_AppMain,       PCDU_APP,       50,     16384,  0x0,    0;
-CFE_APP, imu0_app,      IMU0_AppMain,       IMU0_APP,       50,     16384,  0x0,    0;
-CFE_APP, vimc,          VIMC_AppMain,       VIMC,           50,     4915200,  0x0,    0;
-CFE_APP, mastc_app,     MASTC_AppMain,      MASTC_APP,      50,     16384,  0x0,    0;
-!CFE_APP, gnc_app,       GNC_AppMain,        GNC_APP,        50,     16384,  0x0,    0;
+CFE_LIB, cfe_assert,  CFE_Assert_LibInit, ASSERT_LIB,    0,   0,     0x0, 0;
+CFE_LIB, sample_lib,  SAMPLE_LIB_Init,    SAMPLE_LIB,    0,   0,     0x0, 0;
+CFE_APP, sample_app,  SAMPLE_APP_Main,    SAMPLE_APP,   50,   16384, 0x0, 0;
+CFE_APP, ci_lab,      CI_LAB_AppMain,     CI_LAB,       60,   16384, 0x0, 0;
+CFE_APP, to_lab,      TO_LAB_AppMain,     TO_LAB,       70,   16384, 0x0, 0;
+CFE_APP, sch_lab,     SCH_LAB_AppMain,    SCH_LAB,      80,   16384, 0x0, 0;
 !
 ! Startup script fields:
 ! 1. Object Type      -- CFE_APP for an Application, or CFE_LIB for a library.
@@ -44,4 +31,3 @@ CFE_APP, mastc_app,     MASTC_AppMain,      MASTC_APP,      50,     16384,  0x0,
 ! 3. The filename field (2) no longer requires a fully-qualified filename; the path and extension
 !    may be omitted.  If omitted, the standard virtual path (/cf) and a platform-specific default
 !    extension will be used, which is derived from the build system.
-    

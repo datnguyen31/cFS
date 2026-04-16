@@ -8,26 +8,26 @@
 # to be installed in "/opt/x-tools".
 
 # Basic cross system configuration
-SET(CMAKE_SYSTEM_NAME			Linux)
-SET(CMAKE_SYSTEM_VERSION		1)
-SET(CMAKE_SYSTEM_PROCESSOR		arm)
+set(CMAKE_SYSTEM_NAME			Linux)
+set(CMAKE_SYSTEM_VERSION		1)
+set(CMAKE_SYSTEM_PROCESSOR		arm)
 
 # adjust these settings to where the cross compiler actually resides
-SET(CMAKE_C_COMPILER			"/opt/x-tools/arm-cortexa8_neon-linux-gnueabi/bin/arm-cortexa8_neon-linux-gnueabi-gcc")
-SET(CMAKE_CXX_COMPILER			"/opt/x-tools/arm-cortexa8_neon-linux-gnueabi/bin/arm-cortexa8_neon-linux-gnueabi-g++")
+set(CMAKE_C_COMPILER			"/opt/x-tools/arm-cortexa8_neon-linux-gnueabi/bin/arm-cortexa8_neon-linux-gnueabi-gcc")
+set(CMAKE_CXX_COMPILER			"/opt/x-tools/arm-cortexa8_neon-linux-gnueabi/bin/arm-cortexa8_neon-linux-gnueabi-g++")
 
 # where is the target environment
-SET(CMAKE_FIND_ROOT_PATH		"/opt/x-tools/arm-cortexa8_neon-linux-gnueabi/arm-cortexa8_neon-linux-gnueabi/sysroot")
+set(CMAKE_FIND_ROOT_PATH		"/opt/x-tools/arm-cortexa8_neon-linux-gnueabi/arm-cortexa8_neon-linux-gnueabi/sysroot")
 
 # search for programs in the build host directories
-SET(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM	NEVER)
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM	NEVER)
 
 # for libraries and headers in the target directories
-SET(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY	ONLY)
-SET(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE	ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY	ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE	ONLY)
 
 # these settings are specific to cFE/OSAL and determines which 
 # abstraction layers are built when using this toolchain
 # Note that "pc-linux" works fine even though this is not technically a "pc"
-SET(CFE_SYSTEM_PSPNAME      "pc-linux")
-SET(OSAL_SYSTEM_OSTYPE      "posix")
+set(CFE_SYSTEM_PSPNAME      "pc-linux")
+set(OSAL_SYSTEM_OSTYPE      "posix")

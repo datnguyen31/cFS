@@ -56,3 +56,4 @@ set(OSAL_CONFIG_DEBUG_PERMISSIVE_MODE TRUE)
 # However for a flight deployment this may cause undesired delays.
 #
 set(OSAL_CONFIG_UTILITYTASK_PRIORITY 10)
+set(OSAL_CONFIG_MAX_MUTEXES 50)

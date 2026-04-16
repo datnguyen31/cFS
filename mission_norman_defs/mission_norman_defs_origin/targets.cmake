@@ -70,11 +70,11 @@
 # The MISSION_NAME will be compiled into the target build data structure
 # as well as being passed to "git describe" to filter the tags when building
 # the version string.
-SET(MISSION_NAME "SampleMission")
+set(MISSION_NAME "SampleMission")
 
 # SPACECRAFT_ID gets compiled into the build data structure and the PSP may use it.
 # should be an integer.
-SET(SPACECRAFT_ID 0x1F)
+set(SPACECRAFT_ID 0x1F)
 
 # The "MISSION_CORE_MODULES" will be built and statically linked as part
 # of the CFE core executable on every target.  These can be used to amend
@@ -86,6 +86,8 @@ SET(SPACECRAFT_ID 0x1F)
 # and must be loaded explicitly via startup script or command.
 # This list is effectively appended to every TGTx_APPLIST in targets.cmake.
 # Example:
+# list(APPEND MISSION_GLOBAL_APPLIST public_lib io_lib eqt_lib mpc pcdu sch imu0 vimc mastc)
+# list(APPEND MISSION_GLOBAL_APPLIST msp mso sc evm tkm)
 list(APPEND MISSION_GLOBAL_APPLIST sc)
 
 # The "MISSION_GLOBAL_STATIC_APPLIST" is similar to MISSION_GLOBAL_APPLIST
@@ -96,15 +98,19 @@ list(APPEND MISSION_GLOBAL_APPLIST sc)
 
 # FT_INSTALL_SUBDIR indicates where the black box test data files (lua scripts) should
 # be copied during the install process.
-SET(FT_INSTALL_SUBDIR "host/functional-test")
+set(FT_INSTALL_SUBDIR "host/functional-test")
 
 # Each target board can have its own HW arch selection and set of included apps
-SET(MISSION_CPUNAMES cpu1 cpu2)
+# CPU1: Mission Operation Computer (including mission operator, mobility, power and communication)
+# CPU2: Guidance, Navigation & Control Computer
+# CPU3: Science Computer
+set(MISSION_CPUNAMES cpu1 cpu2)
 
 set(cpu1_PROCESSORID 1)
 set(cpu1_APPLIST hs)
 set(cpu1_FILELIST cfe_es_startup.scr)
 set(cpu1_SYSTEM i686-linux-gnu)
+
 # CPU2 example.  This is not built by default anymore but
 # serves as an example of how one would configure multiple cpus.
 set(cpu2_PROCESSORID 2)
@@ -119,5 +125,5 @@ foreach(subdir IN LISTS SUBDIRS_LIST)
 endforeach()
 
 add_compile_options(
-    -DMISSION_NORMAN
+    -DMISSION_NOMAD
 )
