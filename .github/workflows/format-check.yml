@@ -2,9 +2,11 @@ name: Format Check
 
 # Run on all push and pull requests
 on:
-  push:
   pull_request:
-  workflow_call:
+    types:
+      - opened
+      - reopened
+      - synchronize
 
 # Force bash to apply pipefail option so pipeline failures aren't masked
 defaults:
@@ -31,7 +33,7 @@ jobs:
     #Continue if check-for-duplicates found no duplicates. Always runs for pull-requests.
     needs: check-for-duplicates
     if: ${{ needs.check-for-duplicates.outputs.should_skip != 'true' }}
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     timeout-minutes: 15
 
     steps:
@@ -66,7 +68,7 @@ jobs:
     needs: check-for-duplicates
     # Only run for pull-requests.
     if: ${{ github.event_name == 'pull_request' }}
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     timeout-minutes: 15
     steps:
       # Check each commit message associated with the pull-request against the pattern.
