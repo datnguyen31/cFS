@@ -70,3 +70,6 @@
 	path = apps/sc
 	url = ./apps/sc/
 	branch = datng31/production-branch
+[submodule "apps/edf"]
+	path = apps/edf
+	url = ./apps/edf

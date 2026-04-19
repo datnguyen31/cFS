@@ -12,7 +12,6 @@ kanpilot.toml
 
 # Recover later
 /apps/ci/
-/apps/edf/
 /apps/edp/
 /apps/gnc/
 /apps/morch/
