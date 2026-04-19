@@ -42,72 +42,31 @@
 	path = tools/tblCRCTool
 	url = https://github.com/nasa/tblCRCTool.git
   branch = main
-[submodule "apps/mpc"]
-	path = apps/mpc
-	url = ./apps/mpc/
-[submodule "apps/gnc"]
-	path = apps/gnc
-	url = ./apps/gnc/
-[submodule "apps/edr"]
-	path = apps/edr
-	url = ./apps/edr/
-[submodule "libs/eqt_lib"]
-	path = libs/eqt_lib
-	url = ./libs/eqt_lib/
-[submodule "libs/io_lib"]
-	path = libs/io_lib
-	url = ./libs/io_lib/
-[submodule "apps/era"]
-	path = apps/era
-	url = ./apps/era/
-[submodule "apps/pcdu"]
-	path = apps/pcdu
-	url = ./apps/pcdu/
-[submodule "libs/public_lib"]
-	path = libs/public_lib
-	url = ./libs/public_lib/
-[submodule "apps/imu0"]
-	path = apps/imu0
-	url = ./apps/imu0/
-[submodule "apps/mfc0"]
-	path = apps/mfc0
-	url = ./apps/mfc0/
 [submodule "apps/sch"]
 	path = apps/sch
 	url = ./apps/sch
-[submodule "apps/perc"]
-	path = apps/perc
-	url = ./apps/perc/
+	branch = datng31/production-branch
 [submodule "apps/hs"]
 	path = apps/hs
 	url = ./apps/hs/
-[submodule "apps/mastc"]
-	path = apps/mastc
-	url = ./apps/mastc/
-[submodule "apps/evm"]
-	path = apps/evm
-	url = ./apps/evm
-[submodule "apps/msp"]
-	path = apps/msp
-	url = ./apps/msp
-[submodule "apps/mso"]
-	path = apps/mso
-	url = ./apps/mso/
-[submodule "apps/tkm"]
-	path = apps/tkm
-	url = ./apps/tkm
+	branch = datng31/production-branch
 [submodule "apps/cf"]
 	path = apps/cf
 	url = ./apps/cf/
+	branch = datng31/production-branch
 [submodule "apps/ds"]
 	path = apps/ds
 	url = ./apps/ds/
+	branch = datng31/production-branch
 [submodule "apps/fm"]
 	path = apps/fm
 	url = ./apps/fm/
+	branch = datng31/production-branch
 [submodule "apps/lc"]
 	path = apps/lc
 	url = ./apps/lc/
+	branch = datng31/production-branch
 [submodule "apps/sc"]
 	path = apps/sc
 	url = ./apps/sc/
+	branch = datng31/production-branch
