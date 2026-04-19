@@ -9,3 +9,20 @@ build
 .legacy/
 kanpilot.toml
 -cppcheck-build-dir
+
+# Recover later
+/apps/ci/
+/apps/edf/
+/apps/edp/
+/apps/gnc/
+/apps/morch/
+/apps/mplan/
+/apps/ppt/
+/apps/sbn/
+/apps/tkm/
+/apps/to/
+/libs/eqt_lib/
+/libs/gnc_lib/
+/libs/io_lib/
+/libs/math_lib/
+/tools/ECI/
